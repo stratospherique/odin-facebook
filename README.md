@@ -1,24 +1,12 @@
-# README
+**Odin Facebook** is a mini blog that allows users to publish new posts about a variety of topics.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Entity Relationship diagrame (requesting review)
 
-Things you may want to cover:
+![Facebook database ER design](diagram.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* The contributers of the Project
+  * Jorge Fernando Rincón Figueroa
+  [Jorge's personal repo](https://github.com/jofer86)
+  
+  * Ahmed Mahfoudh 
+  [Ahmed's personal repo](https://github.com/stratospherique)
