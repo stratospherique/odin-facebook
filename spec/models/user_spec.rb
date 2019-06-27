@@ -113,5 +113,16 @@ RSpec.describe User, type: :model do
     user.valid? 
     expect(user.errors[:password_confirmation]).to include("doesn't match Password")
   end
+
+  it "returns an user's full name as a string" do
+    user = User.new(
+      first_name: "Maxim",
+      last_name: "fernando",
+      email: "jorge@gmail.com",
+      password: "password",
+      password_confirmation: "password"
+    )
+    expect(user.name).to eq "Maxim fernando"
+  end
   
 end
