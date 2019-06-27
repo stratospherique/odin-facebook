@@ -6,7 +6,8 @@ RSpec.describe User, type: :model do
       first_name: "jorge",
       last_name: "fernando",
       email: "jorge@gmail.com",
-      password: "password"
+      password: "password",
+      password_confirmation: "password"
     )
     expect(user).to be_valid
   end
@@ -47,8 +48,70 @@ RSpec.describe User, type: :model do
     expect(user.errors[:last_name]).to include("is too long (maximum is 20 characters)")
   end
 
-  it "is invalid without a email adress" 
-  it "is invalid without a password"
-  it "is invalid without a matching password confirmation"
-  it "is invalid with a duplicate email adress"
+  it "is invalid when the email format is wrong" do
+    user = User.new(email: "aldoqsd1")
+    user.valid?
+    expect(user.errors[:email]).to include("is invalid")
+  end
+
+  it "is invalid when email is taken" do
+    User.create(
+      first_name: "jorge",
+      last_name: "fernando",
+      email: "jorge@gmail.com",
+      password: "password",
+      password_confirmation: "password"
+    )
+    user = User.new(
+      first_name: "Maxim",
+      last_name: "fernando",
+      email: "jorge@gmail.com",
+      password: "password",
+      password_confirmation: "password"
+    )
+    user.valid? 
+    expect(user.errors[:email]).to include("has already been taken")
+  end
+    
+  it "is invalid without a email adress" do 
+    user = User.new(email: "")
+    user.valid?
+    expect(user.errors[:email]).to include("can't be blank")
+  end
+
+  it "is invalid without a password"do
+    user = User.new(password: "")
+    user.valid?
+    expect(user.errors[:password]).to include("can't be blank")
+  end
+
+  it "is invalid with a short password"do
+    user = User.new(password: "41256")
+    user.valid?
+    expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+  end
+
+  it "is invalid without a password confirmation" do
+    user = User.new(
+      first_name: "Maxim",
+      last_name: "fernando",
+      email: "jorge@gmail.com",
+      password: "password"
+    )
+    user.valid? 
+    expect(user.errors[:password_confirmation]).to include("can't be blank")
+  end
+  
+  it "is invalid without a matching password confirmation" do
+    user = User.new(
+      first_name: "Maxim",
+      last_name: "fernando",
+      email: "jorge@gmail.com",
+      password: "password",
+      password_confirmation: "npassword"
+    )
+    user.valid? 
+    expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+  end
+  
 end
