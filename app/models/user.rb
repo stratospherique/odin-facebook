@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, foreign_key: "author_id"
+  has_one :profile, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :first_name, presence: true, length: {minimum: 4, maximum: 20}
