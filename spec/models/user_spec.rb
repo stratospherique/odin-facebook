@@ -126,5 +126,49 @@ RSpec.describe User, type: :model do
     )
     expect(user.name).to eq "Maxim fernando"
   end
+
+  it "returns an empty list of friends if no one has accepted the invitation" do
+    u1 = User.create(
+      first_name: "jorge",
+      last_name:"fernando",
+      email:"jorge@gmail.com",
+      password: "password",
+      password_confirmation: "password"
+    )
+
+    u2 = User.create(
+      first_name: "ahmed",
+      last_name:"mahfoudh",
+      email:"ahmed@gmail.com",
+      password: "password",
+      password_confirmation: "password",
+    )
+
+    inv = u1.invitations.create(:invited => u2)
+    inv.valid?
+    expect(u1.friends).to be_empty
+  end
+
+  it "returns the list of friends of a user" do
+    u1 = User.create(
+      first_name: "jorge",
+      last_name:"fernando",
+      email:"jorge@gmail.com",
+      password: "password",
+      password_confirmation: "password"
+    )
+
+    u2 = User.create(
+      first_name: "ahmed",
+      last_name:"mahfoudh",
+      email:"ahmed@gmail.com",
+      password: "password",
+      password_confirmation: "password",
+    )
+
+    inv = u1.invitations.create(:invited => u2, status: "accepted")
+    inv.valid?
+    expect(u1.friends).to include(u2)
+  end
   
 end
