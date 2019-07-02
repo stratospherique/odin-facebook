@@ -1,8 +1,11 @@
 class User < ApplicationRecord
+  has_one :profile, dependent: :destroy
   has_many :posts, foreign_key: "author_id"
   has_many :comments, foreign_key: "commenter_id"
   has_many :commented_posts, through: :comments, class_name: "Post", source: :post
-  has_one :profile, dependent: :destroy
+  has_many :likes, foreign_key: "liker_id"
+  has_many :liked_posts, through: :likes, class_name: "Post"
+  
 
   #friendship association
   has_many :invitations, foreign_key: :invitee_id
