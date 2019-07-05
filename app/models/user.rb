@@ -36,7 +36,8 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
       user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name# assuming the user model has a name
+      user.last_name = auth.info.last_name
+      # assuming the user model has a name
       # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.

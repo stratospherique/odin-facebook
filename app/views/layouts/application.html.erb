@@ -11,9 +11,12 @@
 
   <body>
       <header>
+        
         <nav>
           <ul>
+          <% if user_signed_in? %>
             <li> <%= link_to 'Profile', user_path(current_user) %> </li>
+          <% end %>
             <li> <%#= link_to 'Home', path %> </li>
             <li> <%#= link_to 'Add Friends', path %> </li>
           </ul>
@@ -21,18 +24,18 @@
         <nav>
           <% if user_signed_in?%>
   
-          <h1>Welcome again <%= current_user.first_name %></h1>
-  
-          <% if cookies[:facebook_avatar] %>
-            <%= image_tag cookies[:facebook_avatar] %>
-          <% else %>
-            <%= gravatar_for(current_user) %>
-          <% end %>
+            <h1>Welcome again <%= current_user.first_name %></h1>    
+            <% if cookies[:facebook_avatar] %>
+              <%= image_tag cookies[:facebook_avatar] %>
+            <% else %>
+              <%= gravatar_for(current_user) %>
+            <% end %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
           <% end %>
         </nav>
       </header>
       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+        <p class="alert"><%= alert %></p>
     <%= yield %>
 
     <%= debug(params) if Rails.env.development? %>
