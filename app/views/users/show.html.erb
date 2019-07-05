@@ -1,0 +1,9 @@
+<h1><%= @user.name %></h1>
+<h2>User's latest posts</h2>
+<% unless @posts.empty? %>
+  <ul>
+<% @posts.each do |post| %>
+  <li> <%= post.title | post.body %> </li>
+<% end %>
+  </ul>
+<% end %>

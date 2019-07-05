@@ -10,9 +10,31 @@
   </head>
 
   <body>
-
+      <header>
+        <nav>
+          <ul>
+            <li> <%= link_to 'Profile', user_path(current_user) %> </li>
+            <li> <%#= link_to 'Home', path %> </li>
+            <li> <%#= link_to 'Add Friends', path %> </li>
+          </ul>
+        </nav>
+        <nav>
+          <% if user_signed_in?%>
+  
+          <h1>Welcome again <%= current_user.first_name %></h1>
+  
+          <% if cookies[:facebook_avatar] %>
+            <%= image_tag cookies[:facebook_avatar] %>
+          <% else %>
+            <%= gravatar_for(current_user) %>
+          <% end %>
+          <% end %>
+        </nav>
+      </header>
       <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
