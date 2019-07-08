@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id]);
     @posts = @user.posts   
     @post = current_user.posts.build
-    
+    @friends = current_user.friends
   end
 
 

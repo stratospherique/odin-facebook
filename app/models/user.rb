@@ -42,7 +42,6 @@ class User < ApplicationRecord
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
-      
     end
   end
 
