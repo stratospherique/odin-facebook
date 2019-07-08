@@ -1,0 +1,38 @@
+<% if @pending_friends %>
+    <h1>Pending</h1>
+    <% @pending_friends.each do |pending| %>
+        <ul>
+            <li><%= pending.first_name %></li> 
+        </ul>
+    <% end %>
+<% end %>
+
+<% if @friends %>
+    <h1>Friends</h1>
+    <% @friends.each do |friends| %>
+        
+        <ul>
+            <li><%= friends.first_name %></li> 
+        </ul>
+    <% end %>
+<% end %>
+
+<% if @other_people %>
+    <h1> Unknown People! </h1>
+    <% @other_people.each do |person| %>
+        
+        <ul>
+            <li><%= person.first_name%> |
+            <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+                <input type="hidden" name ="invitation[invitee]" value ="<%= current_user.id %>"  >
+
+                <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
+                
+                <input type="submit" value="Invite the fool!"  >
+            </form>
+            </li> 
+        </ul>
+    <% end %>
+<% end %>

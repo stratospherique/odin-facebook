@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     user = User.find(params[:like][:user_id])
     if like.save
       redirect_to user_path(user)
-      flash[:notice] = "Succesfuly commented"
+      flash[:notice] = "Liked!"
     else
         render 'new'
     end
