@@ -10,6 +10,18 @@ class InvitationsController < ApplicationController
         end
     end
 
+    def destroy
+        inv = Invitation.find(params[:id])
+        inv.destroy
+        redirect_to users_path
+    end
+
+    def update
+        inv = Invitation.find(params[:id])
+        inv.update_column(:status, "accepted")
+        redirect_to users_path
+    end
+
     private
 
     def invitation_params

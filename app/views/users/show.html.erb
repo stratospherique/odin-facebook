@@ -12,7 +12,7 @@
 <% @posts.each do |post| %>
   <li> <%= post.title%> | <%= post.body%> | <%= post.likers.size %> Likes </li>
   <% if post.likers.include?(current_user) %>
-    <p>Post Liked</p>
+    <p>Post Liked <%= link_to 'unlike', like_path(post.likes.where(liker_id: current_user.id).first.id), method: :delete %> </p>
   <% else %>
     <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -25,7 +25,9 @@
   Comments: 
   <% post.comments.each do |comment| %>
     <ul>
-      <li> <%= comment.body %> | By: <%= comment.commenter.first_name %>  </li>
+      <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
+        <%= link_to 'Delete comment', comment_path(comment.id), method: :delete %>
+      <% end %> </li>
     </ul>
   <% end %>
   <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">

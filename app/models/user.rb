@@ -20,7 +20,11 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    self.invitations.where(status: "pending").map{ |x| x.invited } + self.requests.where(status: "pending").map{ |x| x.invitee }   
+    self.invitations.where(status: "pending").map{ |x| x.invited } #+ self.requests.where(status: "pending").map{ |x| x.invitee }   
+  end
+
+  def accept_friends
+    self.requests.where(status: "pending").map{ |x| x.invitee }
   end
 
   validates :first_name, presence: true, length: {minimum: 4, maximum: 20}

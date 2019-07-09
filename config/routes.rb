@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   root to: "pages#index"
   resources :users, only: [:show, :index]
   resources :posts, only: [:create]
-  resources :comments, only: [:create]
-  resources :likes, only: [:create]
+  resources :comments, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   resources :profiles, only: [:create, :update]
-  resources :invitations, only: [:create]
+  resources :invitations, only: [:create, :destroy, :update]
 end

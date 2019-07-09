@@ -2,17 +2,18 @@
     <h1>Pending</h1>
     <% @pending_friends.each do |pending| %>
         <ul>
-            <li><%= pending.first_name %></li> 
+        
+            <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
         </ul>
     <% end %>
 <% end %>
 
 <% if @friends %>
     <h1>Friends</h1>
-    <% @friends.each do |friends| %>
+    <% @friends.each do |friend| %>
         
         <ul>
-            <li><%= friends.first_name %></li> 
+            <li><%= friend.first_name %> </li> 
         </ul>
     <% end %>
 <% end %>
@@ -35,4 +36,13 @@
             </li> 
         </ul>
     <% end %>
+<% end %>
+
+<h1>Friend Requests:</h1>
+<% unless @accept_friends.empty? %>
+    <ul>
+    <% @accept_friends.each do |user| %>
+    <li> <%= user.first_name %> | <%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> 
+    <% end %>
+    </ul>
 <% end %>

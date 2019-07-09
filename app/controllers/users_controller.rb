@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   def index
     @pending_friends = current_user.pending_friends
     @friends = current_user.friends
-    @other_people = User.all - @friends - @pending_friends
+    @accept_friends = current_user.accept_friends
+    @other_people = User.all - @friends - @pending_friends - @accept_friends - [current_user]
     @invite = current_user.invitations.build
   end
 
@@ -18,10 +19,6 @@ class UsersController < ApplicationController
     else
       @profile = current_user.build_profile
     end
-    
   end
-
-
-
 
 end

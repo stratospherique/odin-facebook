@@ -9,4 +9,11 @@ class LikesController < ApplicationController
         render 'new'
     end
   end
+
+  def destroy
+    like = Like.find(params[:id])
+    user = like.liked_post.author
+    like.destroy
+    redirect_to user_path(user)
+  end
 end
