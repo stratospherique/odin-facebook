@@ -16,9 +16,10 @@
           <ul>
           <% if user_signed_in? %>
             <li> <%= link_to 'Profile', user_path(current_user) %> </li>
+            <li> <%= link_to 'Notifications :' + pending_friends.to_s, users_path %> </li>
           <% end %>
             <li> <%#= link_to 'Home', path %> </li>
-            <li> <%#= link_to 'Add Friends', path %> </li>
+            
           </ul>
         </nav>
         <nav>

@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
-
+    def index        
+        @posts = []
+        current_user.friends.each{|f| f.posts.each {|pi| @posts << pi}}
+        current_user.posts.each { |post| @posts << post}
+        @posts.sort!{|x, y| y.created_at <=> x.created_at }
+        
+    end
     
     def create
         @post = Post.new(post_params)

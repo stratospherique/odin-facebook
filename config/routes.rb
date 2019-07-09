@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#index"
   resources :users, only: [:show, :index]
-  resources :posts, only: [:create]
+  resources :posts, only: [:create, :index]
   resources :comments, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :profiles, only: [:create, :update]
   resources :invitations, only: [:create, :destroy, :update]
+  get 'likes/:id', to: "likes#delete", as: 'destruction'
 end
