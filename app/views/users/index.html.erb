@@ -11,9 +11,13 @@
 <% if @friends %>
     <h1>Friends</h1>
     <% @friends.each do |friend| %>
-        
+        <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
+            <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first.id %>
+        <% else %> 
+        <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
+        <% end %>
         <ul>
-            <li><%= friend.first_name %> </li> 
+            <li><%= friend.first_name %> | <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %></li> 
         </ul>
     <% end %>
 <% end %>

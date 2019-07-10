@@ -27,6 +27,10 @@ class User < ApplicationRecord
     self.requests.where(status: "pending").map{ |x| x.invitee }
   end
 
+  # notification  for comment and likes on posts
+  has_many :notifications
+
+  # validations ==============================
   validates :first_name, presence: true, length: {minimum: 4, maximum: 20}
   validates :last_name, presence: true, length: {minimum: 4, maximum: 20}
   validates :password_confirmation, presence: true

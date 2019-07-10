@@ -1,0 +1,10 @@
+<h1>list of notifications</h1>
+<% if @notifications.empty? %>
+  <p>No notifications yet</p>
+<% else %>
+  <ul>
+    <% @notifications.each do |notification| %>
+      <li> <%= notification.message %> </li>
+    <% end %>
+  </ul>
+<% end %>

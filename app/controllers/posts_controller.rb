@@ -4,6 +4,7 @@ class PostsController < ApplicationController
         current_user.friends.each{|f| f.posts.each {|pi| @posts << pi}}
         current_user.posts.each { |post| @posts << post}
         @posts.sort!{|x, y| y.created_at <=> x.created_at }
+        @post = current_user.posts.build
         
     end
     
@@ -11,7 +12,11 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.author = current_user
         if @post.save
-            redirect_to user_path(current_user)
+            if params[:timeline]
+                redirect_to posts_path
+            else 
+                redirect_to user_path(current_user)
+            end
             flash[:notice] = "Post Created!"
         else
             render 'new'
