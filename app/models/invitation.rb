@@ -7,6 +7,11 @@ class Invitation < ApplicationRecord
     
   end
 
+  before_update do |invitation|
+    notif = invitation.invitee.notifications.build
+    notif.message = "#{invitation.invited.name} has accepted your friend request"
+    notif.save
+  end
       
   
   belongs_to :invitee, class_name: "User"

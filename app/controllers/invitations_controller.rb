@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
 
     def update
         inv = Invitation.find(params[:id])
-        inv.update_column(:status, "accepted")
+        inv.update(:status => "accepted")
         redirect_to users_path
     end
 
