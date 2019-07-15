@@ -1,13 +1,49 @@
 header {
   display: flex;
   justify-content: space-between;
-  nav {
+  max-height: 50px;
+  .nav-left {
     display: flex;
     justify-content: space-around;
     ul {
       display: flex;
+      list-style: none;
+      justify-content: space-around;
+      padding: 0;
+      background-color: orangered;
+      align-items: center;
+      margin: 0;
+    }
+    li{
+      padding: 10px;
+      border: 2px, solid, black;
+      a {
+        text-decoration: none;
+        color: black;      
+      }
     }
   }
-
-
+  .nav-right{
+    display: flex;
+    justify-content: space-around;
+    ul{
+      display: flex;
+      list-style: none;
+      justify-content: space-around;
+      padding: 0;
+      background-color: aqua;
+      align-items: center;
+      margin: 0;
+      li{
+        padding: 10px;
+        border: 2px, solid, black;
+        
+        a{
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }  
+  }
 }
+
