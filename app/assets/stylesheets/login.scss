@@ -1,0 +1,33 @@
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  .form {
+    padding: 2rem;
+      & > div {
+      width: 20vw;
+      min-width: 20vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid;
+      
+      .field {
+        padding: 2rem;
+      }
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      input {
+        width: 80px;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  
+}
