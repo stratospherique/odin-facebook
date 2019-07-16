@@ -24,6 +24,7 @@
       </div>
       <p class="timeline__show-post__body"><%= post.body %> </p>  
       <% if post.likers.include?(current_user) %>
+        
           <p>Post Liked <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'}%> </p>
       <% else %>
       <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
@@ -31,7 +32,7 @@
           <input type="hidden" name="like[post_id]" value=<%= post.id %>>
           <input type="hidden" name="like[user_id]" value=<%= current_user.id %>>
           <input type="hidden" name="like[source]" value=<%= @user ? 'profile' : 'timeline' %>>        
-          <input type="submit" value="Like">
+          <input type="submit" value="Like" class="like_button">
       </form>  
       <% end %>  <br>
     

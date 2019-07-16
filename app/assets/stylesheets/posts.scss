@@ -99,5 +99,21 @@
             border: 1px solid white;
             padding: 1rem;
         }
+
+        .like_button {
+            width: 66px;
+            border-radius: 8px;
+            background-image: url("like.png");
+            background-size: 12px 12px;
+            background-repeat: no-repeat;
+            background-position: 5px 2px;
+            border: 2px solid $color-secondary;
+            transition: 0.5s ease-in;
+            &:hover {
+                border-color: $color-fifth;
+            }
+        }
+
+        
     }
 }
