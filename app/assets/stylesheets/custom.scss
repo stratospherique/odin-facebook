@@ -3,6 +3,16 @@ body{
   background-color: $color-primary;
 }
 
+.default-a{
+  text-decoration: none;
+  color: rgb(68, 65, 65);
+  transition: .5s all;
+  &:hover{
+    transform: scale(1.2);
+    color:white;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-between;
