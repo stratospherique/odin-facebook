@@ -3,7 +3,7 @@
    <div class="form"> 
     <div>
         <h1>Log in</h1>
-
+        <p class="alert"><%= alert %></p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name) ,html: {class: "login-form"}) do |f| %>
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field", placeholder: "                  Email" %>

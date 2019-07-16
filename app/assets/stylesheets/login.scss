@@ -6,7 +6,7 @@ section {
   height: 90vh;
   margin-top: 35px;
   .form {
-    
+      
     .login-form{
       display: flex;
       flex-direction: column;
@@ -24,6 +24,8 @@ section {
       border-radius: 8px;
       background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
       box-shadow: 0px 0px 5px 5px rgba(64, 66, 70, 0.459);
+
+      
     }
     .actions {
       display: flex;
@@ -55,3 +57,7 @@ section {
     box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
   }
 }
+
+.alert {
+    color: rgb(255, 87, 87);
+}   

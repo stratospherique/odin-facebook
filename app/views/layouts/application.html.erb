@@ -13,7 +13,10 @@
       <!-- render the header --> 
       <%= render 'layouts/header' %>
       <!-- render the header       END -->
-    
+      <% if current_user %>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+      <% end %>
     <%= yield %>
 
 
