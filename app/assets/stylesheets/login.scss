@@ -1,5 +1,5 @@
 @import 'variables';
-section {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +43,10 @@ section {
   padding: 0.4rem;
   border-radius: 8px;
   box-shadow: 2px 2px 6px 2px rgba(64, 66, 70, 0.459);
+  transition: all .5s;
+  &:focus{
+      transform: scale(1.03);
+  }
 }
 
 .button {
@@ -59,5 +63,6 @@ section {
 }
 
 .alert {
-    color: rgb(255, 87, 87);
+    color: rgb(246, 18, 18);
+    font-weight: bold;
 }   
