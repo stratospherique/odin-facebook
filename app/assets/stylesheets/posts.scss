@@ -6,11 +6,26 @@
     max-width: 1028px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     margin: 0 auto;
     background-color: $color-tertiary;
     &__new-post{
+        width: 508px;
+        max-width: 508px;
         margin-top: 2rem;
+        padding: 1rem;
         background-image: linear-gradient(to bottom, rgba($color-primary, .7), rgba($color-tertiary, .8))
+        #post_title {
+            background-color: black;
+        }
+    }
+
+    &__show-post {
+        padding: 1rem;
+        border: 1px solid red;
+        margin: 1rem auto;
+        width: 508px;
+        max-width: 508px;
     }
 }

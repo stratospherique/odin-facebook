@@ -1,15 +1,24 @@
 <section class="timeline">
   <div class="timeline__new-post">
     <h1>What's on your mind</h1>
-
+    
     <%= form_for @post do |f| %>
       <%= hidden_field_tag :timeline %>
-      Enter Title: <%= f.text_field :title %>
-      Enter Post: <%= f.text_field :body %>
+      <table>
+      <tr>
+        <th>Title:</th>
+        <td><%= f.text_field :title, class: "timeline__new-post--input" %></td>
+      </tr>
+      <tr>
+        <th>Body:</th>
+        <td><%= f.text_area :body, class: "timeline__new-post__box" %></td>
+      </tr>
+      </table>
       <%= f.submit%>
     <% end %>
   </div>
   <% @posts.each do |post| %>
+    <div class="timeline__show-post">
       <%= post.title %> | <%= post.body %> | <%= post.author.first_name %> | <%= post.created_at %> 
       <% if post.likers.include?(current_user) %>
           <p>Post Liked <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'}%> </p>
@@ -38,6 +47,6 @@
     <input type="text" id="body" name="comment[body]">
     <input type="submit" value="Add comment">
     </form>
-      <hr>
+    </div>
   <% end %>
 </section>
