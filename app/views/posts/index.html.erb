@@ -37,12 +37,15 @@
       <% end %>  <br>
     
       <% post.comments.each do |comment| %>
-        <div class="timeline__show-post__comment">
-        <ul>
-          <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
+        <div class="timeline__comment">        
+          <p class="timeline__comment--box"> <%= comment.body %> </p> 
+          
+          
+          
+          | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
             <%= link_to 'Delete comment', tim_com_del_path(comment.id),{controller: "comments", action: "dest"}%>
-          <% end %> </li>
-        </ul>
+          <% end %> 
+        
       <% end %>
       <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

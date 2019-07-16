@@ -91,15 +91,14 @@
             border-radius: 6px;
             background-color: $color-fifth;
             margin-top: 4rem;
+            margin-bottom: 1rem;
             
 
         }
-
-        &__comment {
-            border: 1px solid white;
-            padding: 1rem;
+        #new_like{
+            display: flex;
+            justify-content: flex-end;
         }
-
         .like_button {
             width: 66px;
             border-radius: 8px;
@@ -109,11 +108,27 @@
             background-position: 5px 2px;
             border: 2px solid $color-secondary;
             transition: 0.5s ease-in;
+            
             &:hover {
                 border-color: $color-fifth;
             }
         }
 
         
+    }
+    &__comment{
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        &--box{
+            background-color: rgb(179, 227, 246);
+            width: 60%;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0px 1px 4px 2px rgba(49, 50, 51, 0.459);
+            margin-top: -5px;
+            position: relative;
+            right: 100px;
+        }
     }
 }
