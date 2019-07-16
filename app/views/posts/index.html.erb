@@ -17,7 +17,10 @@
   </div>
   <% @posts.each do |post| %>
     <div class="timeline__show-post">
-      <%= post.title %> | <%= post.body %> | <%= post.author.first_name %> | <%= post.created_at %> 
+      <h2 class="timeline__show-post__title"> <%= post.title %>
+      </h2><em>Created By: <%= post.author.first_name %> </em><br>
+      <em>Posted At: <%= post.created_at %></em> 
+      <p class="timeline__show-post__body"><%= post.body %> </p>  
       <% if post.likers.include?(current_user) %>
           <p>Post Liked <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'}%> </p>
       <% else %>
@@ -29,22 +32,25 @@
           <input type="submit" value="Like">
       </form>  
       <% end %>  <br>
-      Comments: 
-    <% post.comments.each do |comment| %>
-      <ul>
-        <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
-          <%= link_to 'Delete comment', tim_com_del_path(comment.id),{controller: "comments", action: "dest"}%>
-        <% end %> </li>
-      </ul>
-    <% end %>
-    <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
-    <input type="hidden" name="timeline" value="true">
-    <label for="body">Comment here</label>
-    <input type="text" id="body" name="comment[body]">
-    <input type="submit" value="Add comment">
-    </form>
-    </div>
-  <% end %>
+    
+      <% post.comments.each do |comment| %>
+        <div class="timeline__show-post__comment">
+        <ul>
+          <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
+            <%= link_to 'Delete comment', tim_com_del_path(comment.id),{controller: "comments", action: "dest"}%>
+          <% end %> </li>
+        </ul>
+      <% end %>
+      <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+      <input type="hidden" name="timeline" value="true">
+      <label for="body">Comment here</label>
+      <input type="text" id="body" name="comment[body]">
+      <input type="submit" value="Add comment">
+      </form>
+      </div>
+      </div>
+    <%   end %>
+    
 </section>

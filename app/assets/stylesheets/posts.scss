@@ -55,5 +55,28 @@
         margin: 1rem auto;
         width: 508px;
         max-width: 508px;
+
+        &__title {
+            font-size: 2em;
+            display: inline-block;
+            color: $color-secondary;
+            margin: 0;
+            text-transform: capitalize;
+            & ~ em {
+                font-size: 12px;
+                padding: 0.5rem;
+            }
+        }
+
+        &__body {
+            border: 1px solid ;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        &__comment {
+            border: 1px solid white;
+            padding: 1rem;
+        }
     }
 }
