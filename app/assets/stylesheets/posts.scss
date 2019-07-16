@@ -3,22 +3,50 @@
 // You can use Sass (SCSS) here
 @import 'variables';
 .timeline{
-    max-width: 1028px;
+    h1{
+        color: $color-fifth;
+    }
+    max-width: 960px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
     background-color: $color-tertiary;
+    box-shadow: 0px, 0px, 5px, 4px, black;
+    .new_post{
+        display: flex;
+        flex-direction: column;
+    }
     &__new-post{
         width: 508px;
         max-width: 508px;
         margin-top: 2rem;
         padding: 1rem;
-        background-image: linear-gradient(to bottom, rgba($color-primary, .7), rgba($color-tertiary, .8))
-        #post_title {
-            background-color: black;
+        background-image: linear-gradient(to bottom, rgba($color-primary, .7), rgba($color-tertiary, .8));
+        &--box{
+            background-color: $color-fifth;
+            
         }
+        &--title{
+            background-color: $color-fifth;            
+        }
+        &--button{
+            align-self: flex-end;
+            padding: .5rem;
+            border-radius: 20px;
+            box-shadow: 0px 2px 2px 2px rgba(49, 50, 51, 0.459);
+            transition: 0.4s  ease-in;
+            background-color: $color-secondary;
+            border-color: $color-fifth;
+            color: $color-fifth;
+            &:hover {
+                transform: translateY(2px);
+                box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
+            } 
+
+        }
+
     }
 
     &__show-post {

@@ -1,20 +1,18 @@
 <section class="timeline">
   <div class="timeline__new-post">
-    <h1>What's on your mind</h1>
+    <h1>Create a new post!</h1>
     
     <%= form_for @post do |f| %>
       <%= hidden_field_tag :timeline %>
       <table>
       <tr>
-        <th>Title:</th>
-        <td><%= f.text_field :title, class: "timeline__new-post--input" %></td>
+        <td><%= f.text_area :title, cols:"60", rows:"1", placeholder:"Name your post!", class: "timeline__new-post--title" %></td>
       </tr>
-      <tr>
-        <th>Body:</th>
-        <td><%= f.text_area :body, class: "timeline__new-post__box" %></td>
+      <tr>        
+        <td><%= f.text_area :body, rows: "5", cols:"60", placeholder:"What's on your mind?", class: "timeline__new-post--box" %></td>
       </tr>
       </table>
-      <%= f.submit%>
+      <%= f.submit class:"timeline__new-post--button"%>
     <% end %>
   </div>
   <% @posts.each do |post| %>
