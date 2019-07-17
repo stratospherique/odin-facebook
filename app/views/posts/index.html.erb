@@ -22,10 +22,11 @@
         <em>Created By: <%= post.author.first_name %> </em>
         <em>Posted At: <%= post.created_at %></em> 
       </div>
-      <p class="timeline__show-post__body"><%= post.body %> </p>  
-      <% if post.likers.include?(current_user) %>
         
-          <p>Post Liked <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'}%> </p>
+      <p class="timeline__show-post__body">
+      <%= gravatar_for(post.author) %><span><%= post.body %> </span> </p>  
+      <% if post.likers.include?(current_user) %>
+          <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete',  class: "unlike_button"} %>
       <% else %>
       <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -38,7 +39,10 @@
     
       <% post.comments.each do |comment| %>
         <div class="timeline__comment">        
-          <p class="timeline__comment--box"> <%= comment.body %> </p> 
+          <p class="timeline__comment--box">
+          <%= gravatar_for(comment.commenter)%>
+          <span> <%= comment.body %> </span> 
+          </p> 
           
           
           
