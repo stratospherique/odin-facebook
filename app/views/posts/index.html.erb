@@ -26,7 +26,9 @@
       <p class="timeline__show-post__body">
       <%= gravatar_for(post.author) %><span><%= post.body %> </span> </p>  
       <% if post.likers.include?(current_user) %>
-          <%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete',  class: "unlike_button"} %>
+        <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+          <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
+        </form>
       <% else %>
       <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -43,13 +45,9 @@
           <%= gravatar_for(comment.commenter)%>
           <span> <%= comment.body %> </span> 
           </p> 
-          
-          
-          
-          | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
-            <%= link_to 'Delete comment', tim_com_del_path(comment.id),{controller: "comments", action: "dest"}%>
-          <% end %> 
-        
+        <% if comment.commenter == current_user %>
+          <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+        <% end %> 
       <% end %>
       <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -59,8 +57,7 @@
       <input type="text" id="body" name="comment[body]">
       <input type="submit" value="Add comment">
       </form>
-      </div>
-      </div>
-    <%   end %>
-    
+      </div>      
+      </div>   
+    <%end%>
 </section>
