@@ -76,23 +76,35 @@
     margin: 3rem auto;
     align-self: center;
     background-color:$color-fifth; 
-    height: 100vh;
+    height: auto;
+
+    &__content {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .profile{
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
+    background-image: linear-gradient(to right, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
     &__title{
         display: flex;
         align-items: center;
-        background-image: linear-gradient(to right, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        padding: 2rem;
         margin: 0;
-        position: relative;
-        left: -5px;
+        
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid rgba(202, 125, 24, 0.459);
+            margin-right: 2rem;
+        }
     }
-    &__margin{
-        margin: 0;
-    }
+    
     &__box{
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
     }

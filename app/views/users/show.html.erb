@@ -1,95 +1,100 @@
 <main class= "main-profile">
 
   <div class="profile">
-  <h1 class='profile__title'><%= @user.first_name %>'s Profile</h1>
-<div class="timeline__new-post time">
-    <h1>Create a new post!</h1>
-    
-    <%= form_for @post do |f| %>
-      <%= hidden_field_tag :timeline %>
-      <table>
-      <tr>
-        <td><%= f.text_area :title, cols:"50", rows:"1", placeholder:"Name your post!", class: "timeline__new-post--title" %></td>
-      </tr>
-      <tr>        
-        <td><%= f.text_area :body, rows: "5", cols:"50", placeholder:"What's on your mind?", class: "timeline__new-post--box" %></td>
-      </tr>
-      </table>
-      <%= f.submit class:"timeline__new-post--button"%>
-    <% end %>
-  </div>
-      <% if current_user == @user %>
-    <div class="profile__box">
-      <%= form_for @profile, html: {class: "edit_profile"} do |f| %>
-        <p> <%= f.text_field :city, placeholder: 'City' %></p>
-        <p> <%= f.text_field :state, placeholder: 'State' %></p>
-        <p> <%= f.text_field :country, placeholder: 'Country' %></p>
-        <p> <%= f.text_field :gender, placeholder: 'Gender' %></p>
-        <p> <%= f.text_field :birth_date, placeholder: 'Birthday' %></p>
-        <p> <%= f.text_field :phone_number, placeholder: 'Phone Number' %></p>
-        <p> <%= f.submit %>    </p>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="profile__box">
-      <p> City: <%= @profile.city %> <br></p>
-      <p> State: <%= @profile.state %> <br></p>
-      <p> Country: <%= @profile.country %> <br></p>
-      <p> Gender: <%= @profile.gender %>  <br></p>
-      <p> Birth Date: <%= @profile.birth_date %>  <br> </p>
-      <p> Phone Number: <%= @profile.phone_number%>   <br> </p>
-    </div>
-  <% end %>  
-  </div>
-  <hr class="profile__margin">
+    <div class='profile__title'><%= image_tag @user.image %><h1><%= @user.first_name %>'s Profile</h1></div>
   
-  <h2>User's latest posts</h2>
- <% @posts.each do |post| %>
-      <div class="timeline__show-post">  
-        <div class="timeline__show--bar">
-          <h2 class="timeline__show-post__title"> <%= post.title %></h2>
-          <em>Created By: <%= post.author.first_name %> </em>
-          <em>Posted At: <%= post.created_at %></em> 
-        </div>
+    <% if current_user == @user %>
+      <div class="profile__box">
+        <%= form_for @profile, html: {class: "edit_profile"} do |f| %>
+          <p> <%= f.text_field :city, placeholder: 'City' %></p>
+          <p> <%= f.text_field :state, placeholder: 'State' %></p>
+          <p> <%= f.text_field :country, placeholder: 'Country' %></p>
+          <p> <%= f.text_field :gender, placeholder: 'Gender' %></p>
+          <p> <%= f.text_field :birth_date, placeholder: 'Birthday' %></p>
+          <p> <%= f.text_field :phone_number, placeholder: 'Phone Number' %></p>
+          <p> <%= f.submit %>    </p>
+        <%end%>
+      </div>  
+    <% else %>
+      <div class="profile__box">
+        <p> City: <%= @profile.city  || "empty"%> <br></p>
+        <p> State: <%= @profile.state  || "empty"%> <br></p>
+        <p> Country: <%= @profile.country  || "empty"%> <br></p>
+        <p> Gender: <%= @profile.gender  || "empty"%>  <br></p>
+        <p> Birth Date: <%= @profile.birth_date  || "empty"%>  <br> </p>
+        <p> Phone Number: <%= @profile.phone_number || "empty"%>   <br> </p>
+      </div>
+    <% end %>  
+  </div>
 
-        <p class="timeline__show-post__body">
-        <%= image_tag post.author.image %><span><%= post.body %> </span> </p>  
-        <% if post.likers.include?(current_user) %>
+  <!-- the main content part -->
+
+  
+  <div class="main-profile__content">
+    <% if current_user==@user %>
+      <div class="timeline__new-post time">
+      <h1>Create a new post!</h1>
+      
+      <%= form_for @post do |f| %>
+        <table>
+        <tr>
+          <td><%= f.text_area :title, cols:"50", rows:"1", placeholder:"Name your post!", class: "timeline__new-post--title" %></td>
+        </tr>
+        <tr>        
+          <td><%= f.text_area :body, rows: "5", cols:"50", placeholder:"What's on your mind?", class: "timeline__new-post--box" %></td>
+        </tr>
+        </table>
+        <%= f.submit class:"timeline__new-post--button"%>
+      <% end %>
+      </div>  
+    <% end %>
+    
+    <h2>User's latest posts</h2>
+  <% @posts.each do |post| %>
+        <div class="timeline__show-post">  
+          <div class="timeline__show--bar">
+            <h2 class="timeline__show-post__title"> <%= post.title %></h2>
+            <em>Created By: <%= post.author.first_name %> </em>
+            <em>Posted At: <%= post.created_at %></em> 
+          </div>
+
+          <p class="timeline__show-post__body">
+          <%= image_tag post.author.image %><span><%= post.body %> </span> </p>  
+          <% if post.likers.include?(current_user) %>
+            <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+              <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
+            </form>
+          <% else %>
           <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
-            <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
-          </form>
-        <% else %>
-        <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="hidden" name="like[post_id]" value=<%= post.id %>>
-            <input type="hidden" name="like[user_id]" value=<%= current_user.id %>>
-            <input type="hidden" name="like[source]" value=<%= @user ? 'profile' : 'timeline' %>>        
-            <input type="submit" value="Like" class="like_button">
-        </form>  
-        <% end %>  <br>
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="like[post_id]" value=<%= post.id %>>
+              <input type="hidden" name="like[user_id]" value=<%= current_user.id %>>
+              <input type="hidden" name="like[source]" value=<%= @user ? 'profile' : 'timeline' %>>        
+              <input type="submit" value="Like" class="like_button">
+          </form>  
+          <% end %>  <br>
 
-        <% post.comments.each do |comment| %>
-          <div class="timeline__comment">        
-            <p class="timeline__comment--box">
-            <%= image_tag comment.commenter.image%>
-            <span> <%= comment.body %> </span> 
-            </p>
-           
-          <% if comment.commenter == current_user %>
-            <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+          <% post.comments.each do |comment| %>
+            <div class="timeline__comment">        
+              <p class="timeline__comment--box">
+              <%= image_tag comment.commenter.image%>
+              <span> <%= comment.body %> </span> 
+              </p>
+            
+            <% if comment.commenter == current_user %>
+              <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+            <% end %>
+            </div> 
           <% end %>
-          </div> 
-        <% end %>
-        <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
-          <input type="hidden" name="timeline" value="true">
-          <label for="body">Comment here</label>
-          <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
-          <input type="submit" value="Add comment">
-        </form>      
-      </div>   
-    <%end%>
-
+          <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+            <label for="body">Comment here</label>
+            <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
+            <input type="submit" value="Add comment">
+          </form>      
+        </div>   
+      <%end%>
+    </div>
  
 </main>
