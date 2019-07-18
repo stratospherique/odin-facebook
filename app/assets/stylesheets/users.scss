@@ -115,11 +115,22 @@
 }
 
 
-.friends{
+
+//styling for the friend request view
+
+.friendship {
+    width: 80%;
+    height: auto;
+    margin: 3rem auto;
+    background-color:$color-fifth;
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__wrapper{
+    
+    &__pending {
+        border: 1px solid black;
+        margin-top: 2rem;
+        width: 80%;
         
     }
 }

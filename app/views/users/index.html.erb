@@ -1,68 +1,67 @@
-<div class="friends__wrapper">
-    <div class="friends">
-        <header><h1> <%= current_user.first_name%>'s Friends </h1></header>
-        <% if @pending_friends %>
-            <div class="friends__pending">
-            <h1>Pending</h1>
-            <% @pending_friends.each do |pending| %>
-                <ul>        
-                    <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
+<div class="friendship">
+    <div class="friendship__pending">
+        <h1> Pending Friends </h1>
+        <% if @pending_friends && !@pending_friends.empty? %>
+            
+                <h1>Pending</h1>
+                <% @pending_friends.each do |pending| %>
+                    <ul>        
+                        <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
+                    </ul>
+                <% end %>
+        <% else %>
+            <em>No Friend Requests sent recently</em>
+        <% end %>
+    </div>
+    <div class="friendship__friends">
+        <% if @friends %>
+            <h1>Friends</h1>
+            <% @friends.each do |friend| %>
+                <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
+                    <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first.id %>
+                <% else %> 
+                <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
+                <% end %>
+                <ul>
+                    <li><%= friend.first_name %> | <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %></li> 
                 </ul>
             <% end %>
         <% end %>
     </div>
+
+    <div class="friendship_to-add">
+        <% if @other_people %>
+            <h1> People you may Know </h1>
+            <% @other_people.each do |person| %>
+
+                <ul>
+                    <li><%= person.first_name%> |
+                    <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+                        <input type="hidden" name ="invitation[invitee]" value ="<%= current_user.id %>"  >
+
+                        <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
+
+                        <input type="submit" value="Invite the fool!"  >
+                    </form>
+                    </li> 
+                </ul>
+            <% end %>
+        <% end %>
     </div>
+
+    <div class="friendship__f-request">
+        <h1>Friend Requests:</h1>
+        <% unless @accept_friends.empty? %>
+            <ul>
+            <% @accept_friends.each do |user| %>
+            <li> <%= user.first_name %> | <%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> 
+            <% end %>
+            </ul>
+        <% end %>
+    </div>
+
 </div>
 
-<% if @pending_friends %>
-    <h1>Pending</h1>
-    <% @pending_friends.each do |pending| %>
-        <ul>
-        
-            <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
-        </ul>
-    <% end %>
-<% end %>
 
-<% if @friends %>
-    <h1>Friends</h1>
-    <% @friends.each do |friend| %>
-        <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
-            <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first.id %>
-        <% else %> 
-        <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
-        <% end %>
-        <ul>
-            <li><%= friend.first_name %> | <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %></li> 
-        </ul>
-    <% end %>
-<% end %>
-
-<% if @other_people %>
-    <h1> Unknown People! </h1>
-    <% @other_people.each do |person| %>
-        
-        <ul>
-            <li><%= person.first_name%> |
-            <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-                <input type="hidden" name ="invitation[invitee]" value ="<%= current_user.id %>"  >
-
-                <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
-                
-                <input type="submit" value="Invite the fool!"  >
-            </form>
-            </li> 
-        </ul>
-    <% end %>
-<% end %>
-
-<h1>Friend Requests:</h1>
-<% unless @accept_friends.empty? %>
-    <ul>
-    <% @accept_friends.each do |user| %>
-    <li> <%= user.first_name %> | <%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> 
-    <% end %>
-    </ul>
-<% end %>
