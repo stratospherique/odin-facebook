@@ -6,13 +6,13 @@
     <% if current_user == @user %>
       <div class="profile__box">
         <%= form_for @profile, html: {class: "edit_profile"} do |f| %>
-          <p> <%= f.text_field :city, placeholder: 'City' %></p>
-          <p> <%= f.text_field :state, placeholder: 'State' %></p>
-          <p> <%= f.text_field :country, placeholder: 'Country' %></p>
-          <p> <%= f.text_field :gender, placeholder: 'Gender' %></p>
-          <p> <%= f.text_field :birth_date, placeholder: 'Birthday' %></p>
-          <p> <%= f.text_field :phone_number, placeholder: 'Phone Number' %></p>
-          <p> <%= f.submit %>    </p>
+          <p> <%= f.text_field :city, class:"input-box", placeholder: 'City' %></p>
+          <p> <%= f.text_field :state, class:"input-box", placeholder: 'State' %></p>
+          <p> <%= f.text_field :country, class:"input-box", placeholder: 'Country' %></p>
+          <p> <%= f.text_field :gender, class:"input-box", placeholder: 'Gender' %></p>
+          <p> <%= f.text_field :birth_date, class:"input-box", placeholder: 'Birthday' %></p>
+          <p> <%= f.text_field :phone_number, class:"input-box", placeholder: 'Phone Number' %></p>
+          <p class="butto">  <%= f.submit %>    </p>
         <%end%>
       </div>  
     <% else %>
@@ -22,7 +22,7 @@
         <p> Country: <%= @profile.country  || "empty"%> <br></p>
         <p> Gender: <%= @profile.gender  || "empty"%>  <br></p>
         <p> Birth Date: <%= @profile.birth_date  || "empty"%>  <br> </p>
-        <p> Phone Number: <%= @profile.phone_number || "empty"%>   <br> </p>
+        <p>Phone Number: <%= @profile.phone_number || "empty"%>   <br> </p>
       </div>
     <% end %>  
   </div>

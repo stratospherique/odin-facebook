@@ -1,3 +1,19 @@
+<div class="friends__wrapper">
+    <div class="friends">
+        <header><h1> <%= current_user.first_name%>'s Friends </h1></header>
+        <% if @pending_friends %>
+            <div class="friends__pending">
+            <h1>Pending</h1>
+            <% @pending_friends.each do |pending| %>
+                <ul>        
+                    <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
+                </ul>
+            <% end %>
+        <% end %>
+    </div>
+    </div>
+</div>
+
 <% if @pending_friends %>
     <h1>Pending</h1>
     <% @pending_friends.each do |pending| %>
