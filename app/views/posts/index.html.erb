@@ -26,7 +26,7 @@
         </div>
 
         <p class="timeline__show-post__body">
-        <%= gravatar_for(post.author) %><span><%= post.body %> </span> </p>  
+        <%= image_tag post.author.image %><span><%= post.body %> </span> </p>  
         <% if post.likers.include?(current_user) %>
           <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
             <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
@@ -44,7 +44,7 @@
         <% post.comments.each do |comment| %>
           <div class="timeline__comment">        
             <p class="timeline__comment--box">
-            <%= gravatar_for(comment.commenter)%>
+            <%= image_tag comment.commenter.image%>
             <span> <%= comment.body %> </span> 
             </p>
            

@@ -3,14 +3,14 @@
   <div class="profile">
   <h1 class='profile__title'><%= @user.first_name %>'s Profile</h1>
     <% if @user == current_user %>
-      <%= form_for @post do |f| %>
+      <%= form_for @post, html: {class: "profile__new-post"} do |f| %>
         Enter Title: <%= f.text_field :title %>
         Enter Post: <%= f.text_field :body %>
         <%= f.submit%>
       <% end %>
     <% end %>
      <% if current_user == @user %>
-    <%= form_for @profile do |f| %>
+    <%= form_for @profile, html: {class: "edit_profile"} do |f| %>
       <%= f.label :city %>
       <%= f.text_field :city %>
       <%= f.label :state %>

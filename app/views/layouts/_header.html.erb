@@ -16,11 +16,10 @@
           <% if user_signed_in?%>
             <ul>
               <li> Welcome again <%= current_user.first_name %> </li>  
-              <% if cookies[:facebook_avatar] %>
-                <li><%= image_tag cookies[:facebook_avatar] %> </li>
-              <% else %>
-                <li><%= gravatar_for(current_user) %></li>
-              <% end %>              
+              
+                <li><%= image_tag current_user.image %> </li>
+              
+                            
               <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
             </ul>
           <% end %>         

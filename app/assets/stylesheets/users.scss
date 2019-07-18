@@ -70,13 +70,10 @@
 
 
 
-body{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+
 .main-profile{
-    min-width: 960px;
+    max-width: 960px;
+    margin: 3rem auto;
     align-self: center;
     background-color:$color-fifth; 
     height: 80vh;

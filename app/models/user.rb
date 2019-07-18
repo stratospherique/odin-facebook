@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  before_save do |user|
+    unless user.uid
+      user.image = gravatar_for(user)
+     
+    end
+  end
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy, foreign_key: "author_id"
   has_many :comments, dependent: :destroy ,foreign_key: "commenter_id"
@@ -48,8 +54,9 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.password_confirmation = user.password
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
+      user.first_name = auth.info.name
+      user.last_name = auth.info.name
+      user.image = auth.info.image
       # assuming the user model has a name
       # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
@@ -58,16 +65,19 @@ class User < ApplicationRecord
     end
   end
 
-  def self.get_image(auth)
-    auth.info.image
-  end
-
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  private
+
+  def gravatar_for(user, size: 40)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
   end
 
 end
