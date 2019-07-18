@@ -1,87 +1,96 @@
-<h1><%= @user.first_name %>'s</h1>
-<% if @user == current_user %>
-  <%= form_for @post do |f| %>
-    Enter Title: <%= f.text_field :title %>
-    Enter Post: <%= f.text_field :body %>
-    <%= f.submit%>
-  <% end %>
-<% end %>
-<h2>User's latest posts</h2>
-<% unless @posts.empty? %>
-  <ul>
-<% @posts.each do |post| %>
-  <li> <%= post.title%> | <%= post.body%> | <%= post.likers.size %> Likes </li>
-  <% if post.likers.include?(current_user) %>
-    <p>Post Liked <%= link_to 'unlike', like_path(post.likes.where(liker_id: current_user.id).first.id), method: :delete %> </p>
+<main class= "main-profile">
+
+  <div class="profile">
+  <h1 class='profile__title'><%= @user.first_name %>'s Profile</h1>
+    <% if @user == current_user %>
+      <%= form_for @post do |f| %>
+        Enter Title: <%= f.text_field :title %>
+        Enter Post: <%= f.text_field :body %>
+        <%= f.submit%>
+      <% end %>
+    <% end %>
+     <% if current_user == @user %>
+    <%= form_for @profile do |f| %>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+      <%= f.label :country %>
+      <%= f.text_field :country %>
+      <%= f.label :gender %>
+      <%= f.text_field :gender %>
+      <%= f.label :birth_date %>
+      <%= f.text_field :birth_date %>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number %>
+      <%= f.submit %>    
+    <% end %>
   <% else %>
-    <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="like[post_id]" value=<%= post.id %>>
-  <input type="hidden" name="like[user_id]" value=<%= @user.id %>>
-  <input type="submit" value="Like">
-  </form>  
+    <div class="profile__box">
+      <p> City: <%= @profile.city %> <br></p>
+      <p> State: <%= @profile.state %> <br></p>
+      <p> Country: <%= @profile.country %> <br></p>
+      <p> Gender: <%= @profile.gender %>  <br></p>
+      <p> Birth Date: <%= @profile.birth_date %>  <br> </p>
+      <p> Phone Number: <%= @profile.phone_number%>   <br> </p>
+    </div>
   <% end %>
+  </div>
+  <hr class="profile__margin">
   
-  Comments: 
-  <% post.comments.each do |comment| %>
+  <h2>User's latest posts</h2>
+  <% unless @posts.empty? %>
     <ul>
-      <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
-        <%= link_to 'Delete comment', comment_path(comment.id), method: :delete %>
-      <% end %> </li>
+  <% @posts.each do |post| %>
+    <li> <%= post.title%> | <%= post.body%> | <%= post.likers.size %> Likes </li>
+    <% if post.likers.include?(current_user) %>
+      <p>Post Liked <%= link_to 'unlike', like_path(post.likes.where(liker_id: current_user.id).first.id), method: :delete %> </p>
+    <% else %>
+      <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="like[post_id]" value=<%= post.id %>>
+    <input type="hidden" name="like[user_id]" value=<%= @user.id %>>
+    <input type="submit" value="Like">
+    </form>  
+    <% end %>
+    
+    Comments: 
+    <% post.comments.each do |comment| %>
+      <ul>
+        <li> <%= comment.body %> | By: <%= comment.commenter.first_name %> <% if comment.commenter == current_user %>
+          <%= link_to 'Delete comment', comment_path(comment.id), method: :delete %>
+        <% end %> </li>
+      </ul>
+    <% end %>
+    <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+    <label for="body">Comment here</label>
+    <input type="text" id="body" name="comment[body]">
+    <input type="submit" value="Add comment">
+    </form>
+  <% end %>
     </ul>
   <% end %>
-  <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
-  <label for="body">Comment here</label>
-  <input type="text" id="body" name="comment[body]">
-  <input type="submit" value="Add comment">
-  </form>
-<% end %>
-  </ul>
-<% end %>
 
-<hr>
-<% unless @friends.empty? %>
-  <em>The friends of <%= @user.first_name %></em>
-  <ul>
-    <% @friends.each do |friend| %>
-    <li> <%= friend.name %> </li>
+  <hr>
+  <% unless @friends.empty? %>
+    <em>The friends of <%= @user.first_name %></em>
+    <ul>
+      <% @friends.each do |friend| %>
+      <li> <%= friend.name %> </li>
+      <% end %>
+    </ul>
+      
+  <% end %>
+
+  <hr>
+
+  <% if @profile.errors.any? %>
+    <% @profile.errors.full_messages do |msg| %>
+      <%= msg %>
     <% end %>
-  </ul>
-    
-<% end %>
-
-<hr>
-
-<% if @profile.errors.any? %>
-  <% @profile.errors.full_messages do |msg| %>
-    <%= msg %>
   <% end %>
-<% end %>
 
-<% if current_user == @user %>
-  <%= form_for @profile do |f| %>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-    <%= f.label :state %>
-    <%= f.text_field :state %>
-    <%= f.label :country %>
-    <%= f.text_field :country %>
-    <%= f.label :gender %>
-    <%= f.text_field :gender %>
-    <%= f.label :birth_date %>
-    <%= f.text_field :birth_date %>
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-    <%= f.submit %>    
-  <% end %>
-<% else %>
-  <h1> <%= @user.first_name%>'s Profile </h1>
-  City: <%= @profile.city %> <br>
-  State: <%= @profile.state %> <br>
-  Country: <%= @profile.country %> <br>
-  Gender: <%= @profile.gender %>  <br>
-  Birth Date: <%= @profile.birth_date %>  <br> 
-  Phone Number: <%= @profile.phone_number%>   <br> 
-<% end %>
+ 
+</main>
