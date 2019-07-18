@@ -1,13 +1,13 @@
 <div class="friendship">
     <div class="friendship__pending">
         <h1> Pending Friends </h1>
-        <% if @pending_friends && !@pending_friends.empty? %>
-            
-                <h1>Pending</h1>
+        <% if @pending_friends && !@pending_friends.empty? %>     
                 <% @pending_friends.each do |pending| %>
-                    <ul>        
-                        <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
-                    </ul>
+                    <div class="name-request">
+                        <span class="name"><%= pending.first_name %></span> 
+
+                        <span class="request"> <%= link_to 'Delete Friend Request',     invitation_path(pending.requests.where(invitee_id: current_user.id) .first.id), method: :delete %> </span>
+                    </div>
                 <% end %>
         <% else %>
             <em>No Friend Requests sent recently</em>
@@ -22,9 +22,9 @@
                 <% else %> 
                 <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
                 <% end %>
-                <ul>
-                    <li><%= friend.first_name %> | <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %></li> 
-                </ul>
+                <div class="friendship__box">
+                    <span><%= friend.first_name %> </span> <span> <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %> </span>
+                </div>
             <% end %>
         <% end %>
     </div>
