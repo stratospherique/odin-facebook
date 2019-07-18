@@ -76,7 +76,7 @@
     margin: 3rem auto;
     align-self: center;
     background-color:$color-fifth; 
-    height: 80vh;
+    height: 100vh;
 }
 
 .profile{
@@ -87,6 +87,8 @@
         align-items: center;
         background-image: linear-gradient(to right, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         margin: 0;
+        position: relative;
+        left: -5px;
     }
     &__margin{
         margin: 0;
@@ -104,3 +106,9 @@
     }
 }
 
+.time{
+    margin: 0;
+    width: 45%;
+    position: relative;
+    left: 12px;
+}
