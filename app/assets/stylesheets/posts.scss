@@ -4,16 +4,18 @@
 @import 'variables';
 .timeline{
     height: auto;
+    position: relative;
+    top:-1rem;
+    background-color: whitesmoke;
     h1{
-        color: $color-fifth;
+        color: $color-sixth;
     }
     max-width: 960px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
-    background-color: $color-tertiary;
+    margin: 0 auto;    
     box-shadow: 0px, 0px, 5px, 4px, black;
     .new_post{
         display: flex;
@@ -24,7 +26,7 @@
         max-width: 508px;
         margin-top: 2rem;
         padding: 1rem;
-        background-image: linear-gradient(to bottom, rgba($color-primary, .7), rgba($color-tertiary, .8));
+        background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         &--box{
             background-color: $color-fifth;
             
@@ -40,7 +42,7 @@
             transition: 0.4s  ease-in;
             background-color: $color-secondary;
             border-color: $color-fifth;
-            color: $color-fifth;
+            color: $color-tertiary;
             &:hover {
                 transform: translateY(2px);
                 box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
@@ -50,7 +52,7 @@
 
     }
     &__show--bar{
-        background-image: linear-gradient(to bottom, rgba($color-primary, .7), rgba($color-tertiary, .8));
+        background-image: linear-gradient(to top, rgba($color-tertiary, .7), rgba($color-fifth, .7));
         width: 100%;
         position: absolute;
         top: 0;
@@ -60,7 +62,8 @@
         display: flex;
         flex-direction: column; 
         align-items: center;  
-        box-shadow: 0px 0px 0px 0px rgba(49, 50, 51, 0.459);
+        box-shadow: inset 0px 0px 6px 6px rgba(121, 132, 143, 0.459);
+        
     }
 
 
@@ -69,9 +72,10 @@
         margin: 1rem auto;
         width: 508px;
         max-width: 508px;
-        background-color: $color-fourth;
+        background-image: linear-gradient(to top, rgba($color-secondary, .7), rgba($color-fifth, .7));
         border-radius: 1rem;
-        box-shadow: 0px 2px 2px 2px rgba(49, 50, 51, 0.459);
+        box-shadow: inset 0px 0px 5px 8px rgba(121, 132, 143, 0.459);
+        
         position: relative;
         height: auto;
 

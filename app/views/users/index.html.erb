@@ -5,8 +5,8 @@
             <ul>    
                 <% @pending_friends.each do |pending| %>
                     <li class="name-request">
-                        <span class="name"><%= pending.first_name %></span> 
-
+                        <img src= <%= pending.image %> alt="Good looking person">
+                        <span class="name"><%= pending.first_name %></span>
                         <span class="request"> <%= link_to 'Delete Friend Request',     invitation_path(pending.requests.where(invitee_id: current_user.id) .first.id), method: :delete %> </span>
                     </li>
                 <% end %>
@@ -28,7 +28,12 @@
                     <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id:    friend.id).first.id %>
                     <% end %>
 
-                        <li class="name-request"><span class="name"><%= friend.first_name %> </span> <span class="request"> <%= link_to 'Delete Friend    Request', invitation_path(Invitation.find(invitation_id).id), method: :delete  %> </span></li>
+                        <li class="name-request">
+                            <img src=<%= friend.image %> alt="Good looking person">
+                            <span class="name"><%= friend.first_name %> </span>
+                            <span class="request"> <%= link_to 'Delete Friend    Request', invitation_path(Invitation.find(invitation_id).id), method: :delete  %> 
+                            </span>
+                        </li>
                 <% end %>
             </ul>
         <% else %>
@@ -46,6 +51,7 @@
 
                 
                     <li class="name-request">
+                    <img src=<%= person.image %> alt="Good looking person">
                     <span class="name"><%= person.first_name%></span> 
                     <span class="request">
                     <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
@@ -74,6 +80,7 @@
             <ul>
             <% @accept_friends.each do |user| %>
             <li class="name-request"> 
+            <img src=<%= user.image %> alt="Good looking person">
             <span class="name"><%= user.first_name %></span>
             <span class="accept"><%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> </span>
             <% end %>
