@@ -62,14 +62,14 @@
           <%= image_tag post.author.image %><span><%= post.body %> </span> </p>  
           <% if post.likers.include?(current_user) %>
             <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
-              <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
+              <button class="like_button"><%= link_to 'unlike', like_path(post.likes.where(liker_id: current_user.id).first.id), method: :delete %></button>
             </form>
           <% else %>
           <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden" name="like[post_id]" value=<%= post.id %>>
-              <input type="hidden" name="like[user_id]" value=<%= current_user.id %>>
-              <input type="hidden" name="like[source]" value=<%= @user ? 'profile' : 'timeline' %>>        
+              <input type="hidden" name="like[user_id]" value=<%= @user.id %>>
+              <input type="hidden" name="like[source]" value="<%= @user ? 'profile' : 'timeline' %>">        
               <input type="submit" value="Like" class="like_button">
           </form>  
           <% end %>  <br>
@@ -86,13 +86,13 @@
             <% end %>
             </div> 
           <% end %>
-          <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
+          <form id="new_comment" action="/comments" method="post" accept-charset="UTF-8" name="comment">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
             <label for="body">Comment here</label>
             <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
             <input type="submit" value="Add comment">
-          </form>      
+          </form>
         </div>   
       <%end%>
     </div>

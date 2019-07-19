@@ -47,7 +47,6 @@
             <%= image_tag comment.commenter.image%>
             <span> <%= comment.body %> </span> 
             </p>
-           
           <% if comment.commenter == current_user %>
             <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
           <% end %>

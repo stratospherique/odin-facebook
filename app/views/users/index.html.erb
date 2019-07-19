@@ -41,10 +41,10 @@
     <div class="friendship__pending">
         <h1> People you may Know </h1>
         <% if @other_people && !@other_people.empty? %>
-            
-            <% @other_people.each do |person| %>
+            <ul>
+                <% @other_people.each do |person| %>
 
-                <ul>
+                
                     <li class="name-request">
                     <span class="name"><%= person.first_name%></span> 
                     <span class="request">
@@ -59,9 +59,8 @@
                     </form>
                     </span>
                     </li> 
-                </ul>
-            <% end %>
-        
+                <% end %>
+            </ul>
         <% else %>
             <ul>
                     <li class="name-request"><em>No New friends to add</em></li>
