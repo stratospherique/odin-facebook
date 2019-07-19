@@ -17,29 +17,37 @@
             </ul>
         <% end %>
     </div>
-    <div class="friendship__friends">
-        <% if @friends %>
-            <h1>Friends</h1>
-            <% @friends.each do |friend| %>
-                <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
-                    <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first.id %>
-                <% else %> 
-                <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
+    <div class="friendship__pending">
+        <h1>Friends</h1>
+        <% if @friends && !@friends.empty? %>
+                <ul>
+                <% @friends.each do |friend| %>
+                    <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
+                        <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id:    friend.id).first.id %>
+                    <% else %> 
+                    <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id:    friend.id).first.id %>
+                    <% end %>
+
+                        <li class="name-request"><span class="name"><%= friend.first_name %> </span> <span class="request"> <%= link_to 'Delete Friend    Request', invitation_path(Invitation.find(invitation_id).id), method: :delete  %> </span></li>
                 <% end %>
-                <div class="friendship__box">
-                    <span><%= friend.first_name %> </span> <span> <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %> </span>
-                </div>
-            <% end %>
+            </ul>
+        <% else %>
+            <ul>
+            <li class="name-request"><em>You don't have friends. Yet!</em></li>
+            </ul>
         <% end %>
     </div>
 
-    <div class="friendship_to-add">
-        <% if @other_people %>
-            <h1> People you may Know </h1>
+    <div class="friendship__pending">
+        <h1> People you may Know </h1>
+        <% if @other_people && !@other_people.empty? %>
+            
             <% @other_people.each do |person| %>
 
                 <ul>
-                    <li><%= person.first_name%> |
+                    <li class="name-request">
+                    <span class="name"><%= person.first_name%></span> 
+                    <span class="request">
                     <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -47,11 +55,17 @@
 
                         <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
 
-                        <input type="submit" value="Invite the fool!"  >
+                        <input type="submit" value="Invite the fool!" >
                     </form>
+                    </span>
                     </li> 
                 </ul>
             <% end %>
+        
+        <% else %>
+            <ul>
+                    <li class="name-request"><em>No New friends to add</em></li>
+            </ul>
         <% end %>
     </div>
 

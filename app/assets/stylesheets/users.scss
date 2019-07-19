@@ -138,6 +138,7 @@
         box-shadow: 0px 0px 10px 4px rgba(49, 50, 51, 0.459);
         h1{
             align-self: center;
+
         }
         ul {
             width: 90%;
@@ -174,13 +175,7 @@
         /*background-color: $color-fifth;*/
         color: rgb(15, 46, 28);
         font-weight: bold;
-        a{
-            color: rgb(15, 46, 28);
-            text-decoration: underline;
-            font-weight: bold;
-            transition: 0.3s ease-out;
-
-        }
+        
     }
     .name{
         width: 60%;
@@ -197,8 +192,10 @@
         a{
             text-decoration: none;
             transition: .5s all;
+            display: inline-block;
+            /*width: 80%; */
             &:hover{
-                transform: translateX(3px);
+                transform: translateX(3px) ;
                 color:red;
             }
         }
