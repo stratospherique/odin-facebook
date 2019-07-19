@@ -55,7 +55,7 @@
 
                         <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
 
-                        <input type="submit" value="Invite the fool!" >
+                        <input type="submit" value="Invite the fool!" class="submit-btn" >
                     </form>
                     </span>
                     </li> 
@@ -69,13 +69,19 @@
         <% end %>
     </div>
 
-    <div class="friendship__f-request">
+    <div class="friendship__pending">
         <h1>Friend Requests:</h1>
         <% unless @accept_friends.empty? %>
             <ul>
             <% @accept_friends.each do |user| %>
-            <li> <%= user.first_name %> | <%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> 
+            <li class="name-request"> 
+            <span class="name"><%= user.first_name %></span>
+            <span class="accept"><%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> </span>
             <% end %>
+            </ul>
+        <% else %>
+            <ul>
+                <li class="name-request"><em>No New friends requests! </em></li>
             </ul>
         <% end %>
     </div>
