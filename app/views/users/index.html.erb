@@ -2,15 +2,19 @@
     <div class="friendship__pending">
         <h1> Pending Friends </h1>
         <% if @pending_friends && !@pending_friends.empty? %>     
+            <ul>    
                 <% @pending_friends.each do |pending| %>
-                    <div class="name-request">
+                    <li class="name-request">
                         <span class="name"><%= pending.first_name %></span> 
 
                         <span class="request"> <%= link_to 'Delete Friend Request',     invitation_path(pending.requests.where(invitee_id: current_user.id) .first.id), method: :delete %> </span>
-                    </div>
+                    </li>
                 <% end %>
+            </ul>
         <% else %>
-            <em>No Friend Requests sent recently</em>
+            <ul>
+            <li class="name-request"><em>No Friend Requests sent recently</em></li>
+            </ul>
         <% end %>
     </div>
     <div class="friendship__friends">
