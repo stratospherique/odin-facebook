@@ -154,10 +154,10 @@
 .name-request{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    border-top: 1px solid rgb(152, 105, 179);
-    border-bottom: 1px solid rgb(152, 105, 179);   
+    align-items: center; 
+    
+    // border-top: 1px solid rgb(152, 105, 179);
+    // border-bottom: 1px solid rgb(152, 105, 179);   
     border-radius: 10px;
     width: 90%;
     transition: 0.4s ease-in;
@@ -167,9 +167,10 @@
     }
     .request,
     .name {      
-        padding:1rem;
-        border-radius: 8px;
-        
+        padding: .5rem;
+        border-radius: 8px 0 0 8px;
+        border-right: 1px solid black;
+        height: 100%;
         /*background-color: $color-fifth;*/
         color: rgb(15, 46, 28);
         font-weight: bold;
@@ -178,8 +179,27 @@
             text-decoration: underline;
             font-weight: bold;
             transition: 0.3s ease-out;
-            &:hover {
-                color: rgb(133, 184, 154);
+
+        }
+    }
+    .name{
+        width: 60%;
+        background-color: white;
+    }
+    .request{
+        
+        height: 100%;
+        padding-right: 10px;
+        background-color: white;
+        border-radius: 0 8px 8px 0;
+        width: 40%;
+        text-align: center;
+        a{
+            text-decoration: none;
+            transition: .5s all;
+            &:hover{
+                transform: translateX(3px);
+                color:red;
             }
         }
     }
