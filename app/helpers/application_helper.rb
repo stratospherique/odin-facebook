@@ -8,5 +8,8 @@ module ApplicationHelper
     @accept_friends = current_user.accept_friends.length
   end
 
+  def get_notif
+    current_user.notifications
+  end
 
 end

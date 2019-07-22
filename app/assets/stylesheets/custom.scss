@@ -17,24 +17,43 @@ header {
   display: flex;
   justify-content: space-between;
   max-height: 50px;
+  border: 2px solid yellow;
+  padding: .4rem;
   .nav-left {
     display: flex;
-    justify-content: space-around;
+    width: 50%;
     ul {
       display: flex;
       list-style: none;
+      width: 100%;
       justify-content: space-around;
       padding: 0;
       background-color: orangered;
       align-items: center;
       margin: 0;
-    }
-    li{
-      padding: 10px;
-      border: 2px, solid, black;
-      a {
-        text-decoration: none;
-        color: black;      
+    
+      li{
+        position: relative;
+        a {
+          text-decoration: none;
+          color: black;      
+          border: 1px solid;
+          display: flex;
+          padding: .5rem;
+          border-radius: 6px;
+        }
+
+        .dropdown {
+          display: none;
+          position: absolute;
+          border: 1px solid red;
+          background-color: green;
+          top: 50px;
+        }
+
+        &:hover ~ .dropdown {
+          display: flex;
+        }
       }
     }
   }
