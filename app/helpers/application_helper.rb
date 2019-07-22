@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def get_notif
-    current_user.notifications
+    current_user.notifications.first(5)
   end
 
 end
