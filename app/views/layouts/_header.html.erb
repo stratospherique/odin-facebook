@@ -14,7 +14,7 @@
           <% else %>
                 <% notifications = get_notif %>
                 <% notifications.each do |notification| %>
-                  <li> <%= notification.message %> </li>
+                  <li class="dropdown__item"> <%= notification.message %> </li>
                 <% end %>
           <% end %>
         </ul>
