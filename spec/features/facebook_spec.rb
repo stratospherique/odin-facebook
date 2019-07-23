@@ -124,7 +124,7 @@ RSpec.feature "Facebooks", type: :feature do
 
   end
 
-  context "Post creation process" do
+  context "Post creation process On the timeline view" do
     scenario "Creating a post" do
       User.create(
         first_name: "jorge",
@@ -145,11 +145,37 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Create Post"
       }.to change(Post.all, :size).by(1)
       expect(page).to have_content "Random message to test over here"
+      expect(page).to have_current_path posts_path
     end
   end
 
-  context "Commenting on a post" do
+  context "Post creation process On the Profile view" do
     scenario "Creating a post" do
+      user = User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+      visit user_path(user)
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      }.to change(Post.all, :size).by(1)
+      expect(page).to have_content "Random message to test over here"
+      expect(page).to have_current_path user_path(user)
+    end
+  end
+
+  context "Commenting on a post on the timeline view" do
+    scenario "commenting on a post" do
       User.create(
         first_name: "jorge",
         last_name: "fernando",
@@ -171,9 +197,114 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Add comment"
       }.to change(Comment.all, :size).by(1)
       expect(page).to have_content "Random coment to be placed here"
+      expect(page).to have_current_path posts_path
     end
   end
   
+  context "Commenting on a post on the Profile view" do
+    scenario "Commenting on a post" do
+      user=User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+      visit user_path(user)
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      fill_in "body", with: "Random coment to be placed here"
+      click_on "Add comment"
+      }.to change(Comment.all, :size).by(1)
+      expect(page).to have_content "Random coment to be placed here"
+      expect(page).to have_current_path user_path(user)
+    end
+  end
+
+  context "Liking a post on the timeline view" do
+    scenario "liking a post" do
+      User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+    
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      click_on "Like"
+      }.to change(Like.all, :size).by(1)
+      expect(page).to have_link('unlike')
+      expect(page).to have_current_path posts_path
+    end
+
+    scenario "unliking a post" do
+      User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+    
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      click_on "Like"
+      }.to change(Like.all, :size).by(1)
+      expect{
+        first(:link, "unlike").click
+      }.to change(Like.all, :size).by(-1)
+      expect(page).to have_current_path posts_path
+    end
+  end
+
+  context "Liking a post on the profile view" do
+    scenario "liking a post" do
+      user = User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+      visit user_path(user)
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      click_on "Like"
+      }.to change(Like.all, :size).by(1)
+      expect(page).to have_link('unlike')
+      expect(page).to have_current_path user_path(user)
+    end
+  end
 =begin
     context "sign in with facebook" do
       before do
