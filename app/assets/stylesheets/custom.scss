@@ -103,16 +103,42 @@ header {
     .drop-box {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      border: 1px solid red;
+      align-items: center;     
       position: absolute;
-      top: 2.3rem;
-      z-index: 1000;
+      top: 1.8rem;
+      z-index: 1;
       transform: scale(0);
+      list-style: none;
+      padding-left: 0;
+      width: max-content;
+      li{
+        padding: 6px;
+        background-image: linear-gradient(to right, $color-secondary, $color-primary);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border: .5px solid black;
+      }
+      a{
+        color: white;
+        text-decoration: none;
+        transition: all .5s;
+        &:hover{
+          transform: scale(1.2);
+          color: red;
+        }
+      }
+      
       
       &:hover {
         transform: scale(1);
       }
     }
   }
+}
+
+
+.notice,
+.alert {
+  color: transparent;
 }
