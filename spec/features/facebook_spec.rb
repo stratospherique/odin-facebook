@@ -15,4 +15,24 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Sign up"
     }.to change(User.all, :size).by(1)
   end
+
+  describe "Sign in process", type: feature do
+    scenario "Login user" do
+      User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"
+      
+      expect(page).to have_content 'Signed in successsfully'
+    end
+  end
+
 end
