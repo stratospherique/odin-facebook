@@ -1,10 +1,14 @@
-<h1>list of notifications</h1>
+<div class="not-wrapper">
+  <h1 class="notification-head">Notifications</h1>
+</div>
+<div class="notifications-wrapper">
 <% if @notifications.empty? %>
-  <p>No notifications yet</p>
+  <p class="no-notification">No notifications yet</p>
 <% else %>
-  <ul>
+  <ul class="notifications">
     <% @notifications.each do |notification| %>
-      <li> <%= notification.message %> </li>
+      <li class="notification"> <%= notification.message %> </li>
     <% end %>
   </ul>
 <% end %>
+</div>

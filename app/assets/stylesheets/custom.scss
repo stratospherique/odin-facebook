@@ -99,9 +99,24 @@ header {
         padding: 10px;
         border: 2px, solid, black;
         
-        a{
+        a {
           text-decoration: none;
-          color: black;
+          color: white;        
+          display: flex;
+          padding: .5rem;
+          border-radius: 6px 6px 0px 0;
+          border: 1px solid transparent;
+          transition: 0.8s ease-in;
+
+          &:hover {
+            transform: translateY(6px);
+            background-color: $color-fifth;
+          }
+          &:hover ~ .dropdown {
+            transition: 0.6s ease-in-out;
+            transform: scale(1);
+
+          }
         }
       }
     }  
