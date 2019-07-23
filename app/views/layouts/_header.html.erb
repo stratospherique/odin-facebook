@@ -26,12 +26,9 @@
   </nav>
   <div class="nav-right">
     <% if user_signed_in?%>
-      <ul>
-        <li> Welcome again <%= current_user.first_name %> </li>  
-        
-          <li><%= image_tag current_user.image %> </li>
-        
-                      
+      <a href="" class="drop-btn"><%= image_tag current_user.image %></a>
+      <ul class="drop-box">
+        <li> Welcome again <%= current_user.first_name %> </li>                
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
     <% end %>         

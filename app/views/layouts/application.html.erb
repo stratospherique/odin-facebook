@@ -10,6 +10,7 @@
   </head>
   
   <body>
+  
   <%= render 'layouts/header' %>
       <% if current_user %>
           <p class="notice"><%= notice %></p>
@@ -17,6 +18,8 @@
       <% end %>
     <%= yield %>
 
+
+ 
 
   </body>
 </html>
