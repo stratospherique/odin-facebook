@@ -303,8 +303,134 @@ RSpec.feature "Facebooks", type: :feature do
       }.to change(Like.all, :size).by(1)
       expect(page).to have_link('unlike')
       expect(page).to have_current_path user_path(user)
+      
     end
   end
+
+  context "Uniking a post on the profile view" do
+    scenario "unliking a post" do
+      user = User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+      )
+
+      visit root_path
+      fill_in "user_email", with: "jorge@gmail.com"
+      fill_in "user_password", with: "password"
+      click_on "Log in"   
+      visit user_path(user)
+      expect{
+      fill_in "post_title", with: "Random title"
+      fill_in "post_body", with: "Random message to test over here"
+      click_on "Create Post"
+      click_on "Like"
+      }.to change(Like.all, :size).by(1)
+      expect(page).to have_link('unlike')
+      expect{
+        first(:link, "unlike").click
+      }.to change(Like.all, :size).by(-1)
+      expect(page).to have_current_path user_path(user)    
+    end
+    
+  end
+
+  context "inviting people you might know to become friends" do
+    scenario "Do the invite of a person" do
+      u1 = User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+        )
+      u2 = User.create(
+          first_name: "fernando",
+          last_name: "jorge",
+          email: "jorgen@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+        )
+        visit root_path
+        fill_in "user_email", with: "jorge@gmail.com"
+        fill_in "user_password", with: "password"
+        click_on "Log in"  
+        visit users_path
+        expect{
+          click_on "Invite the fool!"
+        }.to change(u1.invitations.where(status: "pending"), :size).by(1)
+      end
+      scenario "removing the pending friend request" do 
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+          )
+        u2 = User.create(
+            first_name: "fernando",
+            last_name: "jorge",
+            email: "jorgen@gmail.com",
+            password: "password",
+            password_confirmation: "password"
+          )
+          visit root_path
+          fill_in "user_email", with: "jorge@gmail.com"
+          fill_in "user_password", with: "password"
+          click_on "Log in"  
+          visit users_path
+          expect{
+            click_on "Invite the fool!"
+          }.to change(u1.invitations.where(status: "pending"), :size).by(1)
+          expect{
+            click_on "Delete Friend Request"
+          }.to change(u1.invitations.where(status: "pending"), :size).by(-1)
+        end
+    end
+
+    context "Accept a friend request"do
+      scenario "Accept the friend request sended" do
+      u1 = User.create(
+        first_name: "jorge",
+        last_name: "fernando",
+        email: "jorge@gmail.com",
+        password: "password",
+        password_confirmation: "password"
+        )
+      u2 = User.create(
+          first_name: "fernando",
+          last_name: "jorge",
+          email: "jorgen@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+        )
+        visit root_path
+        fill_in "user_email", with: "jorge@gmail.com"
+        fill_in "user_password", with: "password"
+        click_on "Log in"  
+        visit users_path
+        expect{
+          click_on "Invite the fool!"
+        }.to change(u1.invitations.where(status: "pending"), :size).by(1)
+        click_on "Logout"
+        fill_in "user_email", with: "jorgen@gmail.com"
+        fill_in "user_password", with: "password"
+        click_on "Log in"
+        visit users_path
+        expect{
+          click_link "accept friendship"
+        }.to change(u1.invitations.where(status: "accepted"), :size).by(1)
+        
+      end
+    end
+
+
+
+
+
 =begin
     context "sign in with facebook" do
       before do
