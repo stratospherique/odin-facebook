@@ -1,6 +1,8 @@
 require 'rails_helper'
 require 'koala'
 
+
+
 RSpec.feature "Facebooks", type: :feature do
   context "User sign up" do
     scenario "creation of a new user" do
@@ -392,65 +394,120 @@ RSpec.feature "Facebooks", type: :feature do
     end
 
     context "Accept a friend request"do
-      scenario "Accept the friend request sended" do
-      u1 = User.create(
-        first_name: "jorge",
-        last_name: "fernando",
-        email: "jorge@gmail.com",
-        password: "password",
-        password_confirmation: "password"
-        )
-      u2 = User.create(
-          first_name: "fernando",
-          last_name: "jorge",
-          email: "jorgen@gmail.com",
+      
+
+      scenario "Accept the friend request received" do
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
           password: "password",
           password_confirmation: "password"
-        )
+          )
+        u2 = User.create(
+            first_name: "fernando",
+            last_name: "jorge",
+            email: "jorgen@gmail.com",
+            password: "password",
+            password_confirmation: "password"
+          )
+          visit root_path
+          fill_in "user_email", with: "jorge@gmail.com"
+          fill_in "user_password", with: "password"
+          click_on "Log in"  
+          visit users_path
+          expect{
+            click_on "Invite the fool!"
+          }.to change(u1.invitations.where(status: "pending"), :size).by(1)
+          click_on "Logout"
+          fill_in "user_email", with: "jorgen@gmail.com"
+          fill_in "user_password", with: "password"
+          click_on "Log in"
+          visit users_path
+          expect{
+            click_link "accept friendship"
+          }.to change(u1.invitations.where(status: "accepted"), :size).by(1)
+          
+      end
+
+
+    end
+
+
+    context "testing header navigation link" do
+      scenario "navigate to the timeline view" do
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+          )
         visit root_path
         fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
-        click_on "Log in"  
-        visit users_path
-        expect{
-          click_on "Invite the fool!"
-        }.to change(u1.invitations.where(status: "pending"), :size).by(1)
-        click_on "Logout"
-        fill_in "user_email", with: "jorgen@gmail.com"
+        click_on "Log in"
+        click_on 'Home'
+        expect(page).to have_current_path posts_path
+      end
+
+      scenario "navigate to the profile view" do
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+          )
+        visit root_path
+        fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
         click_on "Log in"
-        visit users_path
-        expect{
-          click_link "accept friendship"
-        }.to change(u1.invitations.where(status: "accepted"), :size).by(1)
-        
+        click_on 'Profile'
+        expect(page).to have_current_path user_path(u1)
       end
-    end
 
-
-
-
-
-=begin
-    context "sign in with facebook" do
-      before do
-        @test_users_api=Koala::Facebook::TestUsers.new(:app_id =>"721321031658977" , :secret =>"07a2196c4e9d1367ea0770f1cdb8aa5b")
-        @test_user=@test_users_api.create(false)
-        # creates a user who hasn't installed your app
-      end
-      after do
-        @test_users_api.delete(@test_user["id"])
-      end
-      scenario "login a user with facebook" do
+      scenario "navigate to the friend requests view" do
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+          )
         visit root_path
-        click_on "Sign in with Facebook"
-        fill_in "email",with: @test_user["email"]
-        fill_in "pass",with: @test_user["password"]
-        click_on "loginbutton"
-        find(:xpath, "//button[@name='__CONFIRM__']").click
-        expect(page).to have_content("Successfully authenticated from Facebook account.")
+        fill_in "user_email", with: "jorge@gmail.com"
+        fill_in "user_password", with: "password"
+        click_on "Log in"
+        click_on 'Friend Requests (0)'
+        expect(page).to have_current_path users_path
       end
+
+      scenario "check the presence of an avatar dropdown menu" do
+        u1 = User.create(
+          first_name: "jorge",
+          last_name: "fernando",
+          email: "jorge@gmail.com",
+          password: "password",
+          password_confirmation: "password"
+          )
+        visit root_path
+        fill_in "user_email", with: "jorge@gmail.com"
+        fill_in "user_password", with: "password"
+        click_on "Log in"
+        click_on 'Notifications'
+        expect(page).to have_current_path notifications_index_path
+        expect(page).to have_css("img",:count => 1)
+        expect(page).to have_css(".drop-btn")
+      end
+      
     end
-=end
-    
+
+    before do
+      Rails.application.env_config["devise.mapping"] = Devise.mappings[:user] # If using Devise
+      Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+    end
+
+   
+  
 end
