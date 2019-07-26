@@ -1,0 +1,39 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables';
+
+
+.notification-head{
+    text-align: center;
+    padding: 3rem;
+    z-index: -3;
+}
+.not-wrapper{
+    margin-top: -16px;
+    background-image: linear-gradient(to left, $color-primary, $color-secondary); 
+    z-index: -2;  
+}
+
+.no-notification{
+    padding: 3rem;
+    background-image: linear-gradient(to left, $color-fifth, $color-fourth);
+    text-align: center;    
+}
+
+
+.notifications-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.notifications{
+    display: inline-block;
+    list-style: none;        
+    text-align: center;
+    padding: 3rem;
+    background-image: linear-gradient(to bottom left, $color-fifth, $color-fourth);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 20px 10px rgba(53, 51, 51, 0.75); 
+}
