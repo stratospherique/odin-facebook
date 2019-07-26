@@ -503,10 +503,7 @@ RSpec.feature "Facebooks", type: :feature do
       
     end
 
-    before do
-      Rails.application.env_config["devise.mapping"] = Devise.mappings[:user] # If using Devise
-      Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
-    end
+    
 
    
   

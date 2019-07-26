@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.1'
 
 gem 'omniauth-facebook'
 gem 'devise', '~> 4.6', '>= 4.6.2'
