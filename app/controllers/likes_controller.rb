@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     like = Like.new(liked_post_id: params[:like][:post_id],liker: current_user)
     user = User.find(params[:like][:user_id])
     if like.save
-      if params[:source] == 'profile'
+      if params[:like][:source] == 'profile'
         redirect_to user_path(user)      
         flash[:notice] = "Liked!"
       else 

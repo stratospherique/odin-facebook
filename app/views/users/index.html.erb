@@ -1,52 +1,97 @@
-<% if @pending_friends %>
-    <h1>Pending</h1>
-    <% @pending_friends.each do |pending| %>
-        <ul>
-        
-            <li><%= pending.first_name %> || <%= link_to 'Delete Friend Request', invitation_path(pending.requests.where(invitee_id: current_user.id).first.id), method: :delete %> </li> 
-        </ul>
-    <% end %>
-<% end %>
-
-<% if @friends %>
-    <h1>Friends</h1>
-    <% @friends.each do |friend| %>
-        <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
-            <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first.id %>
-        <% else %> 
-        <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id: friend.id).first.id %>
+<div class="friendship">
+    <div class="friendship__pending">
+        <h1> Pending Friends </h1>
+        <% if @pending_friends && !@pending_friends.empty? %>     
+            <ul>    
+                <% @pending_friends.each do |pending| %>
+                    <li class="name-request">
+                        <img src= <%= pending.image %> alt="Good looking person">
+                        <span class="name"><%= pending.first_name %></span>
+                        <span class="request"> <%= link_to 'Delete Friend Request',     invitation_path(pending.requests.where(invitee_id: current_user.id) .first.id), method: :delete %> </span>
+                    </li>
+                <% end %>
+            </ul>
+        <% else %>
+            <ul>
+            <li class="name-request"><em>No Friend Requests sent recently</em></li>
+            </ul>
         <% end %>
-        <ul>
-            <li><%= friend.first_name %> | <%= link_to 'Delete Friend Request', invitation_path(Invitation.find(invitation_id).id), method: :delete %></li> 
-        </ul>
-    <% end %>
-<% end %>
+    </div>
+    <div class="friendship__pending">
+        <h1>Friends</h1>
+        <% if @friends && !@friends.empty? %>
+                <ul>
+                <% @friends.each do |friend| %>
+                    <% if Invitation.where(invitee_id: current_user.id, invited_id: friend.id).first %>
+                        <% invitation_id = Invitation.where(invitee_id: current_user.id, invited_id:    friend.id).first.id %>
+                    <% else %> 
+                    <% invitation_id = Invitation.where(invited_id: current_user.id, invitee_id:    friend.id).first.id %>
+                    <% end %>
 
-<% if @other_people %>
-    <h1> Unknown People! </h1>
-    <% @other_people.each do |person| %>
-        
-        <ul>
-            <li><%= person.first_name%> |
-            <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
-                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <li class="name-request">
+                            <img src=<%= friend.image %> alt="Good looking person">
+                            <span class="name"><%= friend.first_name %> </span>
+                            <span class="request"> <%= link_to 'Delete Friend    Request', invitation_path(Invitation.find(invitation_id).id), method: :delete  %> 
+                            </span>
+                        </li>
+                <% end %>
+            </ul>
+        <% else %>
+            <ul>
+            <li class="name-request"><em>You don't have friends. Yet!</em></li>
+            </ul>
+        <% end %>
+    </div>
 
-                <input type="hidden" name ="invitation[invitee]" value ="<%= current_user.id %>"  >
+    <div class="friendship__pending">
+        <h1> People you may Know </h1>
+        <% if @other_people && !@other_people.empty? %>
+            <ul>
+                <% @other_people.each do |person| %>
 
-                <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
                 
-                <input type="submit" value="Invite the fool!"  >
-            </form>
-            </li> 
-        </ul>
-    <% end %>
-<% end %>
+                    <li class="name-request">
+                    <img src=<%= person.image %> alt="Good looking person">
+                    <span class="name"><%= person.first_name%></span> 
+                    <span class="request">
+                    <form id="new_invitation"action="/invitations" method="post" accept-charset="UTF-8" name="invitation">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-<h1>Friend Requests:</h1>
-<% unless @accept_friends.empty? %>
-    <ul>
-    <% @accept_friends.each do |user| %>
-    <li> <%= user.first_name %> | <%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> 
-    <% end %>
-    </ul>
-<% end %>
+                        <input type="hidden" name ="invitation[invitee]" value ="<%= current_user.id %>"  >
+
+                        <input type="hidden" name ="invitation[invited]" value ="<%= person.id %>">
+
+                        <input type="submit" value="Invite the fool!" class="submit-btn" >
+                    </form>
+                    </span>
+                    </li> 
+                <% end %>
+            </ul>
+        <% else %>
+            <ul>
+                    <li class="name-request"><em>No New friends to add</em></li>
+            </ul>
+        <% end %>
+    </div>
+
+    <div class="friendship__pending">
+        <h1>Friend Requests:</h1>
+        <% unless @accept_friends.empty? %>
+            <ul>
+            <% @accept_friends.each do |user| %>
+            <li class="name-request"> 
+            <img src=<%= user.image %> alt="Good looking person">
+            <span class="name"><%= user.first_name %></span>
+            <span class="accept"><%= link_to 'accept friendship', invitation_path(user.invitations.where(invited: current_user).first.id), method: :patch %> </li> </span>
+            <% end %>
+            </ul>
+        <% else %>
+            <ul>
+                <li class="name-request"><em>No New friends requests! </em></li>
+            </ul>
+        <% end %>
+    </div>
+
+</div>
+
+

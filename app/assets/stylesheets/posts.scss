@@ -1,3 +1,231 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here
+@import 'variables';
+.timeline{
+    height: auto;
+    position: relative;
+    top:-1rem;
+    background-color: whitesmoke;
+    z-index: 0;
+    h1{
+        color: $color-sixth;
+    }
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;    
+    box-shadow: 0px, 0px, 5px, 4px, black;
+    .new_post{
+        display: flex;
+        flex-direction: column;
+    }
+    &__new-post{
+        width: 508px;
+        max-width: 508px;
+        margin-top: 2rem;
+        padding: 1rem;
+        background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        &--box{
+            background-color: $color-fifth;
+            
+        }
+        &--title{
+            background-color: $color-fifth;            
+        }
+        &--button{
+            align-self: flex-end;
+            padding: .5rem;
+            border-radius: 20px;
+            box-shadow: 0px 2px 2px 2px rgba(49, 50, 51, 0.459);
+            transition: 0.4s  ease-in;
+            background-color: $color-secondary;
+            border-color: $color-fifth;
+            color: $color-tertiary;
+            &:hover {
+                transform: translateY(2px);
+                box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
+            } 
+
+        }
+
+    }
+    &__show--bar{
+        background-image: linear-gradient(to top, rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;  
+        box-shadow: inset 0px 0px 6px 6px rgba(121, 132, 143, 0.459);
+        
+    }
+
+
+    &__show-post {
+        padding: 3rem;        
+        margin: 1rem auto;
+        width: 508px;
+        max-width: 508px;
+        background-image: linear-gradient(to top, rgba($color-secondary, .7), rgba($color-fifth, .7));
+        border-radius: 1rem;
+        box-shadow: inset 0px 0px 5px 8px rgba(121, 132, 143, 0.459);
+        
+        position: relative;
+        height: auto;
+
+        &__title {
+            font-size: 2em;
+            display: inline-block;
+            color: $color-sixth;
+            margin: 0;
+            text-transform: capitalize;
+            & ~ em {
+                font-size: 12px;
+                padding: 0.5rem;
+            }
+        }
+
+        &__body {
+            display: flex;
+            align-items: center;
+            box-shadow: 0px 1px 4px 2px rgba(49, 50, 51, 0.459);
+            padding: 2rem;
+            border-radius: 6px;
+            background-color: $color-fifth;
+            margin-top: 4rem;
+            margin-bottom: 1rem;
+            
+            & > img {
+                border-radius: 50%;
+                margin-right: 1rem;
+            }
+
+        }
+        #new_like{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .like_button  {
+            width: 66px;
+            border-radius: 8px;
+            background-image: url("like.png");
+            background-size: 12px 12px;
+            background-repeat: no-repeat;
+            background-position: 5px 2px;
+            border: 2px solid $color-secondary;
+            transition: 0.5s ease-in;
+            a{
+                text-decoration: none;
+                color: black;
+                display: flex;
+                justify-content: flex-end;
+            }
+            
+            &:hover {
+                border-color: $color-fifth;
+            }
+        }
+
+
+        
+    }
+    &__comment{
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        &--box{
+            display: flex;
+            align-items: center;
+            background-color: rgb(179, 227, 246);
+            width: 80%;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0px 1px 4px 2px rgba(49, 50, 51, 0.459);
+            margin-top: -5px;
+            & > img {
+                border-radius: 50%;
+                margin-right: 1rem;
+            }
+        }
+        &--deleteBtn{
+            text-decoration: none;
+            color: $color-fifth;
+            padding: 0.4rem;
+            border-radius: 20px;
+            box-shadow: 0px 2px 2px 2px rgba(49, 50, 51, 0.459);
+            transition: 0.4s  ease-in;
+            background-color: $color-secondary;
+            border-color: $color-fifth;
+            position: relative;
+            top: -.7rem;
+            &:hover {
+                transform: translateY(2px);
+                box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
+            }
+        
+        }
+    }
+
+    
+}
+
+.input-box{
+    border-radius: 8px;
+    padding: .2rem;
+    box-shadow: 2px 2px 2px 2px rgba(54, 53, 53, 0.589);
+}
+.butto{
+    display: flex;
+    justify-content: center;
+    input{
+        padding: .4rem;
+        border-radius: 8px;
+        background-color: $color-secondary;
+        border: none;
+        box-shadow: 2px 2px 2px 2px rgba(54, 53, 53, 0.589);
+        transition: 0.4s ease-in;
+        &:hover{
+            transform: translateY(2px);
+            box-shadow: 0px 0px 1px 1px rgba(54, 53, 53, 0.589);
+            color: white;
+            
+        }
+    }
+}
+
+#new_comment {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    label {
+        margin-right: 0.5rem;
+        text-transform: capitalize;
+        color: rgba(189, 53, 53, 0.623);            
+    }
+
+    input[type="text"]{
+        margin-right: 0.5rem;
+        padding: 4px;
+        border-radius: 8px;
+        border-color: $color-fifth;
+        box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.589);
+    }
+
+    input[type="submit"]{
+        border-radius: 6px;
+        box-shadow: 0px 0px 0px 2px rgb(179, 227, 246);
+        transition: 0.5s ease-out;
+        &:hover {
+            transform: translateY(1px);
+            box-shadow: 0px 1px 2px 2px rgb(179, 227, 246);
+        }
+    }
+}

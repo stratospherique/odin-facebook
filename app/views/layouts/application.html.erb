@@ -8,39 +8,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-      <header>
-        
-        <nav>
-          <ul>
-          <% if user_signed_in? %>
-            <li> <%= link_to 'Profile', user_path(current_user) %> </li>
-            <li> <%= link_to 'Notifications :' + pending_friends.to_s, users_path %> </li>
-            <li> <%= link_to 'Home', posts_path %> </li>
-            <li> <%= link_to 'Notifications', notifications_index_path %> </li>
-          <% end %>
-            
-            
-          </ul>
-        </nav>
-        <nav>
-          <% if user_signed_in?%>
   
-            <h1>Welcome again <%= current_user.first_name %></h1>    
-            <% if cookies[:facebook_avatar] %>
-              <%= image_tag cookies[:facebook_avatar] %>
-            <% else %>
-              <%= gravatar_for(current_user) %>
-            <% end %>
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-          <% end %>
-        </nav>
-      </header>
-      <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+  <body>
+  
+  <%= render 'layouts/header' %>
+      <% if current_user %>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+      <% end %>
     <%= yield %>
 
-    <%= debug(params) if Rails.env.development? %>
+
+ 
+
   </body>
 </html>
