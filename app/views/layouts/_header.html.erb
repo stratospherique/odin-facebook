@@ -1,5 +1,8 @@
 <header>
-        
+  <div class="drop-toggler">
+  <label for="drop-nav"></label>
+  </div>
+  <input id="drop-nav" type="checkbox" />       
   <nav class="nav-left">
     <ul>
     <% if user_signed_in? %>
@@ -18,6 +21,9 @@
                 <% end %>
           <% end %>
         </ul>
+        <li class="logout-mobile"> 
+        <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+        </li>
       </li>
     <% end %>
       

@@ -10,13 +10,18 @@
   </head>
   
   <body>
-  
+
+  <div class="container">
   <%= render 'layouts/header' %>
       <% if current_user %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <p class="in-notice"><%= notice %></p>
+          <p class="in-alert"><%= alert %></p>
       <% end %>
+  <div class="content-container">
     <%= yield %>
+  </div>
+  </div>
+  
 
 
  
