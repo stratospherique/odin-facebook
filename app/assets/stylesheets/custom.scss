@@ -54,7 +54,7 @@ body{
 }
 
 header {
-  //position: fixed;
+  position: relative;
   
   display: flex;
   width: 100%;
@@ -69,12 +69,32 @@ header {
   background-image: linear-gradient(to right, $color-secondary, $color-primary);
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
   z-index: 4;
+
+  .logo {
+    display: grid;
+    place-content: center;
+    height: 50px;
+    @media screen and (max-width: 750px) {
+      height: 38px;
+    }
+    width: 140px;
+    font-size: 30px;
+    position: absolute;
+    left: 4%;
+    top: 0;
+    cursor: pointer;
+  }
+
   .nav-left {
     display: flex;
     width: 50%;
+    overflow: hidden;
+    height: auto;
+    transition: height .8s ease;
+    margin-left: auto;
     @media screen and (max-width: 750px) {
       width: 100%;
-      display: none;
+      height: 0;
     }
     ul {
       display: flex;
@@ -151,8 +171,12 @@ header {
   }
   .nav-right{
     display: flex;
+    margin-right: 1%;
     @media screen and (max-width: 750px) {
-      display: none;
+      position: absolute;
+      right: .5rem;
+      top: 0;
+      margin-right: 0;
     }
     flex-direction: column;
     justify-content: center;
@@ -161,10 +185,17 @@ header {
     .drop-btn {
       img {
         border-radius: 50%;
+        @media screen and (max-width: 750px) {
+          height: 2rem;
+          margin-top: 6%;
+        }
       }
 
       &:hover ~ .drop-box {
         transform: scale(1);
+        @media screen and (max-width: 750px) {
+          display: none;
+        }
       }
     }
 
@@ -173,16 +204,15 @@ header {
       flex-direction: column;
       align-items: center;     
       z-index: 1;
+      transition: transform .2s ease-in;
       transform: scale(0);
+      transform-origin: top right;
       list-style: none;
       padding-left: 0;
       width: max-content;
 
       position: absolute;
-      top: 1.8rem;
-      @media screen and (max-width: 750px) {
-        bottom: 4rem;
-      }
+      top: 35px;
       li{
         padding: 6px;
         background-image: linear-gradient(to right, $color-secondary, $color-primary);
@@ -212,7 +242,18 @@ header {
     display: none;
 
     &:checked ~ .nav-left {
-      display: flex;
+      height: 12rem;
+      @media screen and (min-width: 750px) {
+        height: auto;
+      }
+    }
+
+    &:checked ~ .drop-toggler {
+
+
+      .bars {
+        color: gray;
+      }
     }
   }
 
@@ -224,37 +265,21 @@ header {
     border-radius: 6px;
     @media screen and (max-width: 750px) {
       display: flex;
+      align-self: flex-end;
       align-items: center;
-      margin: 1rem;
+      margin: .2rem 3rem;
     }
     
     & > label {
       cursor: pointer;
       width: 2rem;
-      @media screen and (max-width: 750px) {
-        display: inline-block;
-        position: relative;
-        border-bottom: 4px solid;
-        padding-top: 4px;
-  
-        &::before {
-          content: '';
-          display: block;
-          width: 2rem;
-          border-bottom: 4px solid;
-          position: absolute;
-          bottom: 4px;
-          padding-top: 4px;
-        }
-        &::after {
-          content: '';
-          display: block;
-          width: 2rem;
-          border-bottom: 4px solid;
-          position: absolute;
-          top: 8px;
-          padding-top: 4px;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .bars {
+        transition: color .4s ease-in;
+        color: white;
       }
     }
   }

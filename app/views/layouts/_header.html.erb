@@ -1,16 +1,19 @@
 <header>
-  <div class="drop-toggler">
-  <label for="drop-nav"></label>
-  </div>
   <input id="drop-nav" type="checkbox" />       
+  <div class="drop-toggler">
+  <label for="drop-nav"><%= icon('fas', 'bars', class: 'bars fa-2x') %></label>
+  </div>
+  <span class="logo">
+    Odin Book
+  </span>
   <nav class="nav-left">
     <ul>
     <% if user_signed_in? %>
-      <li> <%= link_to 'Home', posts_path %> </li>
-      <li> <%= link_to 'Profile', user_path(current_user) %> </li>
-      <li> <%= link_to 'Friend Requests (' + pending_friends.to_s+")", users_path %> </li>
+      <li> <%= link_to icon('fas', 'home'), posts_path %> </li>
+      <li> <%= link_to icon('fas', 'id-card'), user_path(current_user) %> </li>
+      <li> <%= link_to icon('fas', 'user-plus'), users_path %> </li>
       <li> 
-        <%= link_to 'Notifications', notifications_index_path %> 
+        <%= link_to icon('fas', 'bell'), notifications_index_path %> 
         <ul class="dropdown">
           <% if get_notif.empty? %>
                 <li>No notifications yet</li>
@@ -22,7 +25,7 @@
           <% end %>
         </ul>
         <li class="logout-mobile"> 
-        <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+        <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete %>
         </li>
       </li>
     <% end %>

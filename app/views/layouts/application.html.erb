@@ -11,16 +11,22 @@
   
   <body>
 
-  <div class="container">
-  <%= render 'layouts/header' %>
-      <% if current_user %>
-          <p class="in-notice"><%= notice %></p>
-          <p class="in-alert"><%= alert %></p>
-      <% end %>
-  <div class="content-container">
-    <%= yield %>
-  </div>
-  </div>
+  <% if user_signed_in? %>
+    <div class="container">
+    <%= render 'layouts/header' %>
+        <% if current_user %>
+            <p class="in-notice"><%= notice %></p>
+            <p class="in-alert"><%= alert %></p>
+        <% end %>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    </div>
+  <% else %>
+    <div class="container">
+      <%= yield %>
+    </div>
+  <% end %>
   
 
 
