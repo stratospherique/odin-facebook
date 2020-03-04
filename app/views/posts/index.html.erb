@@ -40,18 +40,19 @@
             <input type="submit" value="Like" class="like_button">
         </form>  
         <% end %>  <br>
-
-        <% post.comments.each do |comment| %>
-          <div class="timeline__comment">        
-            <p class="timeline__comment--box">
-            <%= image_tag comment.commenter.image%>
-            <span> <%= comment.body %> </span> 
-            </p>
-          <% if comment.commenter == current_user %>
-            <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+        <div class="timeline__comment--container">
+          <% post.comments.each do |comment| %>
+            <div class="timeline__comment">        
+              <p class="timeline__comment--box">
+              <%= image_tag comment.commenter.image%>
+              <span> <%= comment.body %> </span> 
+              </p>
+            <% if comment.commenter == current_user %>
+              <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+            <% end %>
+            </div> 
           <% end %>
-          </div> 
-        <% end %>
+        </div>
         <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
