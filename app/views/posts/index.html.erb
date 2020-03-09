@@ -18,50 +18,55 @@
   
   
   <% @posts.each do |post| %>
-      <div class="timeline__show-post">  
-        <div class="timeline__show--bar">
-          <h2 class="timeline__show-post__title"> <%= post.title %></h2>
-          <em>Created By: <%= post.author.first_name %> </em>
-          <em>Posted At: <%= post.created_at %></em> 
+    <article class="timeline__posts">
+      <div class="timeline__posts__gen-info">
+        <%= image_tag post.author.image %>
+        <div class="timeline__posts__gen-info__left">
+          <span><%= post.author.name %></span>
+          <span><%= post.since? %></span>
         </div>
-
-        <p class="timeline__show-post__body">
-        <%= image_tag post.author.image %><span><%= post.body %> </span> </p>  
-        <% if post.likers.include?(current_user) %>
-          <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
-            <button class="like_button"><%= link_to 'unlike', destruction_path(post.likes.where(liker_id: current_user.id).first.id), {controller: 'likes', action: 'delete'} %></button>
-          </form>
-        <% else %>
-        <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+      </div>
+      <div class="timeline__posts__post-details">
+        <h2><%= post.title %></h2>
+        <p><%= post.body%></p>
+      </div>
+      <div class="timeline__posts__statistics">
+        <span>
+          <%= post.nb_likes %>
+        </span>
+        <span>
+          <%= post.nb_comments %>
+        </span>
+      </div>
+      <div class="timeline__posts__buttons">
+        <button>Like</button>
+        <button>Comment</button>
+      </div>
+      <div class="timeline__posts__comment-section">
+        <div class="timeline__posts__comment-section__inline-form">
+          <%= image_tag post.author.image %>
+          <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="hidden" name="like[post_id]" value=<%= post.id %>>
-            <input type="hidden" name="like[user_id]" value=<%= current_user.id %>>
-            <input type="hidden" name="like[source]" value=<%= @user ? 'profile' : 'timeline' %>>        
-            <input type="submit" value="Like" class="like_button">
-        </form>  
-        <% end %>  <br>
-        <div class="timeline__comment--container">
+            <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+            <input type="hidden" name="timeline" value="true">
+            <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
+            <input type="submit" value="Add comment">
+          </form>
+        </div>
+        <div class="timeline__posts__comment-section__comments">
           <% post.comments.each do |comment| %>
             <div class="timeline__comment">        
               <p class="timeline__comment--box">
               <%= image_tag comment.commenter.image%>
               <span> <%= comment.body %> </span> 
-              </p>
-            <% if comment.commenter == current_user %>
-              <%= link_to 'Delete comment',  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
-            <% end %>
+                <% if comment.commenter == current_user %>
+                  <%= link_to icon('far', 'trash-alt'),  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
+                <% end %>
+              </p>  
             </div> 
           <% end %>
-        </div>
-        <form id="new_comment"action="/comments" method="post" accept-charset="UTF-8" name="comment">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
-          <input type="hidden" name="timeline" value="true">
-          <label for="body">Comment here</label>
-          <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
-          <input type="submit" value="Add comment">
-        </form>      
-      </div>   
-    <%end%>
-    
+        </div>        
+      </div>
+    </article>    
+    <% end %>
 </section>

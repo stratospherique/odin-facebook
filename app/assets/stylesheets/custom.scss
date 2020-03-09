@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
 @import 'variables';
+
 body{
   background-color: $color-tertiary;
   height: 100vh;
@@ -27,14 +29,8 @@ body{
 }
 
 .content-container {
-  /* position: absolute;
-  top: 50px; */
   width: 100%;
   height: calc(100% - 50px);
-
-  /* @media screen and (max-width: 950px) {
-    top: 0;
-  } */
   overflow-y: scroll;
 
   &::-webkit-scrollbar-thumb {
@@ -77,9 +73,12 @@ header {
     @media screen and (max-width: 750px) {
       height: 38px;
     }
-    width: 140px;
-    font-size: 30px;
+    width: 150px;
+    font-family: 'Trade Winds', cursive;
+    font-size: 28px;
     position: absolute;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     left: 4%;
     top: 0;
     cursor: pointer;
