@@ -39,7 +39,21 @@
         </span>
       </div>
       <div class="timeline__posts__buttons">
-        <button>Like</button>
+        <% if !post.like_id(current_user.id) %>
+        <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="like[post_id]" value=<%= post.id %> />
+          <input type="hidden" name="like[user_id]" value=<%= current_user.id %> />
+          <button type="submit"> 
+            <%= icon('fas', 'thumbs-up') %> Like
+          </button>
+        </form>
+        <% else %>
+          <%= form_with(url: "/likes/#{post.like_id(current_user.id)}", method: 'delete') do %>
+            <%= hidden_field_tag(:source, 'timeline') %>
+            <%= submit_tag 'unlike' %> 
+          <% end %>
+        <% end %>
         <button>Comment</button>
       </div>
       <div class="timeline__posts__comment-section">
@@ -55,14 +69,14 @@
         </div>
         <div class="timeline__posts__comment-section__comments">
           <% post.comments.each do |comment| %>
-            <div class="timeline__comment">        
-              <p class="timeline__comment--box">
+            <div class="timeline__posts__comment-section__comments__single">        
               <%= image_tag comment.commenter.image%>
-              <span> <%= comment.body %> </span> 
-                <% if comment.commenter == current_user %>
-                  <%= link_to icon('far', 'trash-alt'),  tim_com_del_path(comment.id),{controller: "comments", action: "dest", class:'timeline__comment--deleteBtn'}%>
-                <% end %>
+              <p>
+               <%= comment.body %> 
               </p>  
+                <% if comment.commenter == current_user %>
+                  <%= link_to icon('far', 'trash-alt'),  tim_com_del_path(comment.id),{controller: "comments", action: "dest"}%>
+                <% end %>
             </div> 
           <% end %>
         </div>        

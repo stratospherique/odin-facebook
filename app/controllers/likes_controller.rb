@@ -19,13 +19,16 @@ class LikesController < ApplicationController
     like = Like.find(params[:id])    
     user = like.liked_post.author   
     like.destroy   
-    redirect_to posts_path
   end
-
+  
   def destroy
     like = Like.find(params[:id])    
     user = like.liked_post.author   
     like.destroy   
-    redirect_to user_path(user)
+    if params[:source] === 'timeline'
+      redirect_to posts_path
+    else
+      redirect_to user_path(user)
+    end
   end
 end

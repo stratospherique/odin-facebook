@@ -7,6 +7,11 @@ class Post < ApplicationRecord
     validates :title, presence: true, uniqueness: { scope: :author_id }
     validates :body, presence: true
 
+    def like_id(user_id)
+        like = self.likes.where(liker_id: user_id)[0]
+        like ? like.id : nil 
+    end
+
     def nb_likes
         self.likes.count
     end

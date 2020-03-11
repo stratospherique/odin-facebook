@@ -138,6 +138,39 @@
                 }
             }
 
+            &__comments {
+
+                &__single {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+
+                    img {
+                        position: absolute;
+                        top: 17%;
+                        left: 1%;
+                        border-radius: 50%;
+                        height: 2rem;
+                        //margin-right: .5rem;
+                    }
+
+                    p {
+                        text-align: justify;
+                        border: 1px solid;
+                        width: 80%;
+                        margin-left: 1rem;
+                    }
+
+                    a {
+                        color: magenta;
+                        margin-left: .5rem;
+                        &:hover {
+                            color: mediumblue;
+                        }
+                    }
+                }
+            }
         }
     }
 
