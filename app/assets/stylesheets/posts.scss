@@ -131,12 +131,28 @@
 
             .comment-expand {
                 width: 50%;
+
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+
+                label {
+                    width: 100%;
+                    height: 100%;
+                }
             }
+        }
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]:checked ~ div {
+            display: block;
         }
 
         &__comment-section {
             border: 1px solid red;
-            
+            display: none;
             &__inline-form {
                 display: flex;
                 align-items: center;

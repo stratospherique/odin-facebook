@@ -21,7 +21,7 @@
   </div>
 
 
-  <% @posts.each do |post| %>
+  <% @posts.each_with_index do |post, ind| %>
   <article class="timeline__posts">
     <div class="timeline__posts__gen-info">
       <%= image_tag post.author.image %>
@@ -36,10 +36,10 @@
     </div>
     <div class="timeline__posts__statistics">
       <span>
-        <%= post.nb_likes %>
+        <%= post.nb_likes %> <%= icon('far', 'thumbs-up') %>
       </span>
       <span>
-        <%= post.nb_comments %>
+        <%= post.nb_comments %> <%= icon('far', 'comment-alt') %>
       </span>
     </div>
     <div class="timeline__posts__buttons">
@@ -60,8 +60,11 @@
       </button>
       <% end %>
       <% end %>
-      <button class="comment-expand">Comment</button>
+      <button class="comment-expand">
+        <%= label_tag("comment-expander-#{ind}", 'Comment') %>
+      </button>
     </div>
+    <%= check_box_tag("comment-expander-#{ind}") %>
     <div class="timeline__posts__comment-section">
       <div class="timeline__posts__comment-section__inline-form">
         <%= image_tag post.author.image %>
