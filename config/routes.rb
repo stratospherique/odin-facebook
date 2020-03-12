@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :profiles, only: [:create, :update]
   resources :invitations, only: [:create, :destroy, :update]
   get 'likes/:id', to: "likes#delete", as: 'destruction'
-  get 'comments/:id', to: "comments#dest", as: 'tim_com_del'
+  get 'comments/:id/:source', to: "comments#dest", as: 'tim_com_del'
 end

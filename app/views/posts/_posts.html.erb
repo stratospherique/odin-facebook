@@ -1,0 +1,72 @@
+<% posts.each_with_index do |post, ind| %>
+<article class="timeline__posts">
+  <div class="timeline__posts__gen-info">
+    <%= image_tag post.author.image %>
+    <div class="timeline__posts__gen-info__left">
+      <span><%= post.author.name %></span>
+      <span><%= post.since? %></span>
+    </div>
+  </div>
+  <div class="timeline__posts__post-details">
+    <h2><%= post.title %></h2>
+    <p><%= post.body%></p>
+  </div>
+  <div class="timeline__posts__statistics">
+    <span>
+      <%= post.nb_likes %> <%= icon('far', 'thumbs-up') %>
+    </span>
+    <span>
+      <%= post.nb_comments %> <%= icon('far', 'comment-alt') %>
+    </span>
+  </div>
+  <div class="timeline__posts__buttons">
+    <% if !post.like_id(current_user.id) %>
+    <form id="new_like" action="/likes" method="post" accept-charset="UTF-8" name="like">
+      <%= hidden_field_tag(:source, source) %>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="like[post_id]" value=<%= post.id %> />
+      <input type="hidden" name="like[user_id]" value=<%= current_user.id %> />
+      <button type="submit">
+        <%= icon('fas', 'thumbs-up') %> Like
+      </button>
+    </form>
+    <% else %>
+    <%= form_with(url: "/likes/#{post.like_id(current_user.id)}", method: 'delete') do %>
+    <%= hidden_field_tag(:source, source) %>
+    <button type="submit">
+      <%= icon('fas', 'thumbs-down') %> Unlike
+    </button>
+    <% end %>
+    <% end %>
+    <button class="comment-expand">
+      <%= label_tag("comment-expander-#{ind}", 'Comment') %>
+    </button>
+  </div>
+  <%= check_box_tag("comment-expander-#{ind}") %>
+  <div class="timeline__posts__comment-section">
+    <div class="timeline__posts__comment-section__inline-form">
+      <%= image_tag post.author.image %>
+      <form id="new_comment" action="/comments" method="post" accept-charset="UTF-8" name="comment">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="comment[post_id]" value=<%= post.id %>>
+        <%= hidden_field_tag(:source, source) %>
+        <input type="text" id="body" name="comment[body]" placeholder="Add a comment here!">
+        <input type="submit" value="Add comment">
+      </form>
+    </div>
+    <div class="timeline__posts__comment-section__comments">
+      <% post.comments.each do |comment| %>
+      <div class="timeline__posts__comment-section__comments__single">
+        <%= image_tag comment.commenter.image%>
+        <p>
+          <%= comment.body %>
+        </p>
+        <% if comment.commenter == current_user %>
+        <%= link_to icon('far', 'trash-alt'),  tim_com_del_path(comment.id, source),{controller: "comments", action: "dest"}%>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</article>
+<% end %>
