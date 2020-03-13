@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
             if params[:source] == 'timeline'
                 redirect_to posts_path
             else 
-                redirect_to user_path(@comment.post.author)
+                user = User.find(params[:source])
+                redirect_to user_path(user)
             end
             flash[:notice] = "Succesfuly commented"
         else
@@ -28,7 +29,7 @@ class CommentsController < ApplicationController
         if (params[:source] == 'timeline')
             redirect_to posts_path
         else
-            user = comment.post.author
+            user = User.find(params[:source])
             redirect_to user_path(user)
         end
     end

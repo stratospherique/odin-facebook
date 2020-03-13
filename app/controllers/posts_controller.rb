@@ -13,10 +13,11 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.author = current_user
         if @post.save
-            if params[:timeline]
+            if params[:source] == 'timeline'
                 redirect_to posts_path
             else 
-                redirect_to user_path(current_user)
+                user = User.find(params[:source])
+                redirect_to user_path(user)
             end
             flash[:notice] = "Post Created!"
         else

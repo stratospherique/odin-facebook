@@ -1,25 +1,6 @@
 <section class="timeline">
-  <div class="timeline__new-post">
-    <h1>Create a new post!</h1>
 
-    <%= form_for @post do |f| %>
-    <%= hidden_field_tag :timeline %>
-    <table>
-      <tr>
-        <td>
-          <%= f.text_area :title, cols:"60", rows:"1", placeholder:"Name your post!", class: "timeline__new-post--title" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.text_area :body, rows: "5", cols:"60", placeholder:"What's on your mind?", class: "timeline__new-post--box" %>
-        </td>
-      </tr>
-    </table>
-    <%= f.submit class:"timeline__new-post--button"%>
-    <% end %>
-  </div>
-
-  <%= render partial: 'posts', locals: {posts: @posts, source: 'timeline'} %>
+  <%= render partial: 'shared/post_create', locals: {post: @post, source: 'timeline'} %>
+  <%= render partial: 'shared/posts', locals: {posts: @posts, source: 'timeline'} %>
 
 </section>
