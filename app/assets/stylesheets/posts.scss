@@ -7,11 +7,7 @@
     height: auto;
     position: relative;
     top:-1rem;
-    background-color: whitesmoke;
     z-index: 0;
-    h1{
-        color: $color-sixth;
-    }
     max-width: 960px;
     display: flex;
     flex-direction: column;
@@ -24,7 +20,6 @@
         display: flex;
         flex-direction: column;
         width: 60%;
-        //max-width: 508px;
         margin-top: 2rem;
         padding: 1rem;
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
@@ -55,30 +50,22 @@
                 transform: translateY(2px);
                 box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
             } 
-
         }
-
-    }
-    &__show--bar{
-        background-image: linear-gradient(to top, rgba($color-tertiary, .7), rgba($color-fifth, .7));
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-        display: flex;
-        flex-direction: column; 
-        align-items: center;  
-        box-shadow: inset 0px 0px 6px 6px rgba(121, 132, 143, 0.459);
-        
     }
 
     &__posts {
-        width: 50%;
+        width: 60%;
+        @media screen and (max-width: 750px) {
+            width: 100%;
+            
+          }
+        padding: .5rem;
         margin: 1rem 0;
+        -webkit-box-shadow: 0px 0px 11px 1px rgba(102,61,179,1);
+        -moz-box-shadow: 0px 0px 11px 1px rgba(102,61,179,1);
+        box-shadow: 0px 0px 11px 1px rgba(102,61,179,1);
+        background-color: $color-secondary;
         &__gen-info {
-            border: 1px solid red;
             display: flex;
             align-items: center;
 
@@ -95,13 +82,26 @@
         }
 
         &__post-details {
-            border: 1px solid blue;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
 
             h2 {
-                margin: 0 0 .5rem 0;
+                margin: .5rem 0 .5rem 0;
+                position: relative;
+                text-transform: capitalize;
+
+                &:hover {
+                    &::after {
+                        content: 'Title';
+                        display: block;
+                        position: absolute;
+                        top: 35%;
+                        left: 102%;
+                        font-size: .4em;
+                        font-weight: 100;
+                    }
+                }
             }
 
             p {
@@ -111,20 +111,21 @@
 
         &__statistics {
             border: 1px solid green;
+            border-radius: .4rem;
+            padding: .2rem .5rem;
+            margin: .4rem 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         &__buttons {
-            border: 1px solid orange;
             display: flex;
             align-items: stretch;
             justify-content: stretch;
             
             form {
                 width: 50%;
-
                 button {
                     width: 100%;
                 }
@@ -152,7 +153,6 @@
         }
 
         &__comment-section {
-            border: 1px solid red;
             display: none;
             &__inline-form {
                 display: flex;
@@ -182,7 +182,9 @@
 
                     p {
                         text-align: justify;
-                        border: 1px solid;
+                        border: 1px solid green;
+                        border-radius: .4rem;
+                        padding: .2rem .5rem;
                         width: 80%;
                         margin-left: 1rem;
                     }
