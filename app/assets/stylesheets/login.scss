@@ -5,6 +5,12 @@
   align-items: center;
   height: 90vh;
   margin-top: 35px;
+
+  h2 {
+    margin: 1rem;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
   .form {
       width: 100%;
     .login-form{
@@ -24,14 +30,15 @@
       border-radius: 8px;
       background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
       box-shadow: 0px 0px 5px 5px rgba(64, 66, 70, 0.459);
+    }
 
-      
+    .input-field {
+      text-align: center;
     }
     .actions {
       display: flex;
       justify-content: center;
       input {
-        
         margin-bottom: 1rem;
       }
     }

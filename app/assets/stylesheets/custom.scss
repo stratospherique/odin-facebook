@@ -14,8 +14,10 @@ body{
   text-decoration: none;
   color: rgb(68, 65, 65);
   transition: .5s all;
-  &:hover{
-    transform: scale(1.2);
+  margin: .3rem;
+  &:hover,
+  &:active{
+    text-decoration: underline double;
     color:white;
   }
 }
@@ -28,6 +30,13 @@ body{
   flex-direction: column;
   overflow: hidden;
   position: relative;
+
+  & footer {
+    text-align: center;
+    & > span {
+      user-select: none;
+    }
+  }
 }
 
 .content-container {
@@ -53,6 +62,9 @@ body{
 
   & footer {
     text-align: center;
+    & > span {
+      user-select: none;
+    }
   }
 }
 
@@ -165,6 +177,7 @@ body{
     align-items: flex-end;
     .drop-btn {
       img {
+        cursor: pointer;
         border-radius: 50%;
         @media screen and (max-width: 750px) {
           height: 2rem;
@@ -172,7 +185,8 @@ body{
         }
       }
 
-      &:hover ~ .drop-box {
+      &:hover ~ .drop-box,
+      &:focus ~ .drop-box  {
         transform: scale(1);
         @media screen and (max-width: 750px) {
           display: none;

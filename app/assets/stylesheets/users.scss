@@ -11,9 +11,10 @@
     align-items: center;
     
     
-    
-    .field{
+    .field {
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
     }
     &__box{
         padding: 3rem;
@@ -25,6 +26,13 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         box-shadow: 0px 0px 5px 5px rgba(64, 66, 70, 0.459);
         width: 100%;
+
+        h2 {
+            margin: 1rem;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
         & > form {
             display: flex;
             flex-direction: column;
@@ -37,6 +45,7 @@
         border-radius: 8px;
         box-shadow: 2px 2px 6px 2px rgba(64, 66, 70, 0.459);
         transition: all .5s;
+        text-align: center;
         &:focus{
             transform: scale(1.03);
         }
@@ -63,7 +72,6 @@
             h2 {
                 text-align: center;
             }
-            
         }
     
 }
@@ -113,6 +121,7 @@
                 flex-direction: column;
                 align-items: center;
                 list-style: none;
+                border: 4px double rebeccapurple;
                 & > li {
                     padding: 1rem;
                     margin: 0;
@@ -130,7 +139,7 @@
             }
             @media screen and (max-width: 750px) {
                 & > ul {
-                    width: 250px;
+                    width: 400px;
                     & > li {
                         width: 90%;
                     }
