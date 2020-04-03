@@ -20,10 +20,24 @@
         display: flex;
         flex-direction: column;
         width: 60%;
-        margin-top: 2rem;
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
+        margin-top: 1.5rem;
         padding: 1rem;
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        &--head {
+            font-size: 2em;
+            @media screen and (max-width: 750px) {
+                text-align: center;
+            }
+        }
+        
         &--box{
+            border: none;
+            border: 1px solid gray;
+            border-radius: .5rem;
+            padding: .5rem;
             width: 100%;
             background-color: $color-fifth;  
             resize: none;
@@ -31,14 +45,21 @@
         &--title{
             width: 100%;
             background-color: $color-fifth; 
-            resize: none;           
+            resize: none; 
+            border: none;
+            border: 1px solid gray;
+            border-radius: .5rem;
+            padding: .5rem;  
+            margin-bottom: .5rem;       
         }
+
         .new_post {
             display: flex;
             flex-direction: column;
         }
         &--button{
             align-self: flex-end;
+            margin-top: .5rem;
             padding: .5rem;
             border-radius: 20px;
             box-shadow: 0px 2px 2px 2px rgba(49, 50, 51, 0.459);
@@ -50,6 +71,11 @@
                 transform: translateY(2px);
                 box-shadow: 0px 0px 1px 1px rgba(49, 50, 51, 0.459);
             } 
+
+            @media screen and (max-width: 750px) {
+                align-self: center;
+                width: 40%;
+            }
         }
     }
 

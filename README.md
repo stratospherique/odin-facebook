@@ -62,7 +62,7 @@ rspec
 - [Email](mailto:ahmed.mahfoudh1991@gmail.com?subject=Website%20Inquiry)
 
 :male_detective: Jorge Fernando Rincón Figueroa
-  [Github](https://github.com/jofer86)
+- [Github](https://github.com/jofer86)
 
 ## 🤝 Contributing
 

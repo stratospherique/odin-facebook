@@ -25,7 +25,7 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         box-shadow: 0px 0px 5px 5px rgba(64, 66, 70, 0.459);
         width: 100%;
-        form {
+        & > form {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -100,16 +100,47 @@
         }
     }
     
-    &__box{
+    &__box {
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        
+        & > form {
+            display: flex;
+            justify-content: center;
+            & > ul {
+                padding: 0;
+                border: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                list-style: none;
+                & > li {
+                    padding: 1rem;
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+    
+                    .input-box {
+                        width: 90%;
+                        border: none;
+                        border-radius: none;
+                        //border: 2px solid gray;
+                        text-align: center;
+                    }
+                }
+            }
+            @media screen and (max-width: 750px) {
+                & > ul {
+                    width: 250px;
+                    & > li {
+                        width: 90%;
+                    }
+                }
+            }
+        }
     }
-    p{
-        padding: 1rem;
-        font-weight: bold;
-        color: black;
-        border: 1px solid gray;
-        margin: 0;
 
+    @media screen and (max-width: 750px) {
+        flex-direction: column;
     }
 }
 
@@ -147,7 +178,7 @@
             align-self: center;
 
         }
-        ul {
+        & > ul {
             width: 90%;
         }
     }
