@@ -172,6 +172,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width: 750px){
+        width: 100%;
+    }
     
     &__pending {
         display: flex;
@@ -183,12 +187,22 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         border-radius: 8px;
         box-shadow: 0px 0px 10px 4px rgba(49, 50, 51, 0.459);
-        h1{
-            align-self: center;
+        
+        @media screen and (max-width: 750px){
+            width: 100%;
+        }
 
+        h2{
+            align-self: center;
+            margin-bottom: .5rem;
+            font-size: 1.3em;
+            font-weight: bold;
         }
         & > ul {
-            width: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
     &__box{
@@ -208,6 +222,7 @@
     // border-bottom: 1px solid rgb(152, 105, 179);   
     border-radius: 10px;
     width: 90%;
+    padding: 1rem;
     margin-bottom: 1rem;
     transition: 0.4s ease-in;
     box-shadow: 0px 0px 8px 6px rgba(49, 50, 51, 0.459);
@@ -215,6 +230,13 @@
     &:hover {
         background-color: rgba(224, 187, 187, 0.425);
     }
+
+    & > img {
+        height: 2rem;
+        border-radius: 50%;
+        margin-right: .2rem;
+    }
+
     .request,
     .name {      
         padding: .5rem;
@@ -224,7 +246,7 @@
         /*background-color: $color-fifth;*/
         color: rgb(15, 46, 28);
         font-weight: bold;
-        
+        font-size: .8em;
     }
     .name{
         width: 60%;
@@ -237,14 +259,16 @@
         background-color: white;
         border-radius: 0 8px 8px 0;
         width: 40%;
-        text-align: center;
+        min-width: 110px;
+        display: grid;
+        place-content: center;
         a{
             text-decoration: none;
             transition: .5s all;
             display: inline-block;
-            /*width: 80%; */
+            font-size: .8em;
             &:hover{
-                transform: scale(1.2) ;
+                transform: scale(1.1) ;
                 color:red;
             }
         }
