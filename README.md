@@ -3,7 +3,14 @@
 
 # 💻 Odin Book (BETA)
 
-![alt text](web.jpg)
+<h2 align="center">Web View</h2>
+<p align="center">
+<img src="./web.png" style="text-align: center;"alt="webview"/>
+</p>
+<h2 align="center">Mobile View</h2>
+<p align="center">
+<img src="./mobile.png" alt="mobileview"/>
+</p>
 
 - **Odin Facebook** is a mini blog that allows users to publish new posts about a variety of topics.
 
@@ -61,8 +68,11 @@ rspec
 - [Twitter](https://twitter.com/AhmedMahfoudh8)
 - [Email](mailto:ahmed.mahfoudh1991@gmail.com?subject=Website%20Inquiry)
 
-:male_detective: Jorge Fernando Rincón Figueroa
-- [Github](https://github.com/jofer86)
+👤 **Jorge Fernando Rincón Figueroa**
+
+- Github: [@jofer86](https://github.com/jofer86)
+- Twitter: [@JoferDev](https://twitter.com/JoferDev)
+- Linkedin: [in/fernando-rincon-figueroa/](https://www.linkedin.com/in/fernando-rincon-figueroa/)
 
 ## 🤝 Contributing
 
