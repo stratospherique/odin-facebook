@@ -275,7 +275,7 @@
             display: inline-block;
             font-size: .8em;
             &:hover{
-                transform: scale(1.1) ;
+                text-decoration: underline;
                 color:red;
             }
         }
@@ -284,8 +284,9 @@
             background-color: transparent;
             font-size: 14px;
             transition: .5s all;
-            &:hover{
-                transform: scale(1.2) ;
+            &:hover,
+            &:active{
+                text-decoration: underline;
                 color: green;
                 font-weight: bold;
                 cursor: pointer;
@@ -306,7 +307,7 @@
             display: inline-block;
             /*width: 80%; */
             &:hover{
-                transform: scale(1.2) ;
+                text-decoration: underline;
                 font-weight: bold;
             }
         }

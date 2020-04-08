@@ -29,6 +29,7 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         &--head {
             font-size: 2em;
+            margin-bottom: .5rem;
             @media screen and (max-width: 750px) {
                 text-align: center;
             }
@@ -197,13 +198,14 @@
                     align-items: center;
                     justify-content: center;
                     position: relative;
+                    margin-top: .7rem;
 
                     img {
                         position: absolute;
                         top: 17%;
                         left: 1%;
                         border-radius: 50%;
-                        height: 2rem;
+                        height: 80%;
                         //margin-right: .5rem;
                     }
 
