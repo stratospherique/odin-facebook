@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
         @comment.commenter = current_user
         @comment.post = Post.find(params[:comment][:post_id])
         if @comment.save
-            if params[:timeline]
+            if params[:source] == 'timeline'
                 redirect_to posts_path
             else 
-                redirect_to user_path(@comment.post.author)
+                user = User.find(params[:source])
+                redirect_to user_path(user)
             end
             flash[:notice] = "Succesfuly commented"
         else
@@ -25,7 +26,12 @@ class CommentsController < ApplicationController
     def dest
         comment = Comment.find(params[:id])
         comment.destroy
-        redirect_to posts_path
+        if (params[:source] == 'timeline')
+            redirect_to posts_path
+        else
+            user = User.find(params[:source])
+            redirect_to user_path(user)
+        end
     end
 
     private

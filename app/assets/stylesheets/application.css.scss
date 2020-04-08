@@ -14,8 +14,17 @@
  *= require_self
  */
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 body {
     padding: 0;
-    box-sizing: border-box;
+    
     margin: 0;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
 }

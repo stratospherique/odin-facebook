@@ -1,0 +1,12 @@
+<div class="timeline__new-post">
+  <h1 class="timeline__new-post--head">Create a new post!</h1>
+
+  <%= form_for post do |f| %>
+  <%= hidden_field_tag(:source, source) %>
+  <%= f.text_area :title, cols:"60", rows:"1", placeholder:"Name your post!", class: "timeline__new-post--title" %>
+
+  <%= f.text_area :body, rows: "5", cols:"60", placeholder:"What's on your mind?", class: "timeline__new-post--box" %>
+
+  <%= f.submit class:"timeline__new-post--button"%>
+  <% end %>
+</div>

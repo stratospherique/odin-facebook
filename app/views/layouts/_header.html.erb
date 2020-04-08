@@ -1,37 +1,36 @@
-<header>
-        
+<header class="header-container">
+  <input id="drop-nav" type="checkbox" />
+  <div class="drop-toggler">
+    <label for="drop-nav"><%= icon('fas', 'bars', class: 'bars fa-2x') %></label>
+  </div>
+  <span class="logo">
+    Odin Book
+  </span>
   <nav class="nav-left">
     <ul>
-    <% if user_signed_in? %>
-      <li> <%= link_to 'Home', posts_path %> </li>
-      <li> <%= link_to 'Profile', user_path(current_user) %> </li>
-      <li> <%= link_to 'Friend Requests (' + pending_friends.to_s+")", users_path %> </li>
-      <li> 
-        <%= link_to 'Notifications', notifications_index_path %> 
-        <ul class="dropdown">
-          <% if get_notif.empty? %>
-                <li>No notifications yet</li>
-          <% else %>
-                <% notifications = get_notif %>
-                <% notifications.each do |notification| %>
-                  <li class="dropdown__item"> <%= notification.message %> </li>
-                <% end %>
-          <% end %>
-        </ul>
+      <% if user_signed_in? %>
+      <li> <%= link_to icon('fas', 'home'), posts_path, id: 'home' %> </li>
+      <li> <%= link_to icon('fas', 'id-card'), user_path(current_user), id: 'profile' %> </li>
+      <li> <%= link_to icon('fas', 'user-plus'), users_path, id: 'friend' %> </li>
+      <li>
+        <%= link_to icon('fas', 'bell'), notifications_index_path, id: 'notification' %>
       </li>
-    <% end %>
-      
-      
+      <li class="logout-mobile">
+        <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete %>
+      </li>
+      <% end %>
+
+
     </ul>
   </nav>
   <div class="nav-right">
     <% if user_signed_in?%>
-      <a href="" class="drop-btn"><%= image_tag current_user.image %></a>
-      <ul class="drop-box">
-        <li> Welcome again <%= current_user.first_name %> </li>                
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      </ul>
-    <% end %>         
+    <span class="drop-btn"><%= image_tag current_user.image %></span>
+    <ul class="drop-box">
+      <li> Welcome again <%= current_user.first_name %> </li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    </ul>
+    <% end %>
   </div>
-      
+
 </header>

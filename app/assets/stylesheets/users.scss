@@ -11,9 +11,10 @@
     align-items: center;
     
     
-    
-    .field{
+    .field {
         margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
     }
     &__box{
         padding: 3rem;
@@ -25,7 +26,14 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         box-shadow: 0px 0px 5px 5px rgba(64, 66, 70, 0.459);
         width: 100%;
-        form {
+
+        h2 {
+            margin: 1rem;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        & > form {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -37,6 +45,7 @@
         border-radius: 8px;
         box-shadow: 2px 2px 6px 2px rgba(64, 66, 70, 0.459);
         transition: all .5s;
+        text-align: center;
         &:focus{
             transform: scale(1.03);
         }
@@ -63,7 +72,6 @@
             h2 {
                 text-align: center;
             }
-            
         }
     
 }
@@ -71,8 +79,8 @@
     max-width: 960px;
     margin: 3rem auto;
     align-self: center;
-    background-color:$color-fifth; 
     height: auto;
+    width: 100%;
 
     &__content {
         margin-top: 4rem;
@@ -80,10 +88,16 @@
         flex-direction: column;
         align-items: center;
     }
+
+    h2 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
 }
 
 .profile{
     display: flex;
+    
     justify-content:space-between;
     background-image: linear-gradient(to right, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
     &__title{
@@ -101,16 +115,48 @@
         }
     }
     
-    &__box{
+    &__box {
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
+        
+        & > form {
+            display: flex;
+            justify-content: center;
+            & > ul {
+                padding: 0;
+                border: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                list-style: none;
+                border: 4px double rebeccapurple;
+                & > li {
+                    padding: 1rem;
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+    
+                    .input-box {
+                        width: 90%;
+                        border: none;
+                        border-radius: none;
+                        //border: 2px solid gray;
+                        text-align: center;
+                    }
+                }
+            }
+            @media screen and (max-width: 750px) {
+                & > ul {
+                    width: 400px;
+                    & > li {
+                        width: 90%;
+                    }
+                }
+            }
+        }
     }
-    p{
-        padding: 1rem;
-        font-weight: bold;
-        color: black;
-        border: 1px solid gray;
-        margin: 0;
 
+    @media screen and (max-width: 750px) {
+        flex-direction: column;
     }
 }
 
@@ -133,6 +179,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media screen and (max-width: 750px){
+        width: 100%;
+    }
     
     &__pending {
         display: flex;
@@ -144,12 +194,22 @@
         background-image: linear-gradient(to bottom, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
         border-radius: 8px;
         box-shadow: 0px 0px 10px 4px rgba(49, 50, 51, 0.459);
-        h1{
-            align-self: center;
-
+        
+        @media screen and (max-width: 750px){
+            width: 100%;
         }
-        ul {
-            width: 90%;
+
+        h2{
+            align-self: center;
+            margin-bottom: .5rem;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        & > ul {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
     &__box{
@@ -169,6 +229,7 @@
     // border-bottom: 1px solid rgb(152, 105, 179);   
     border-radius: 10px;
     width: 90%;
+    padding: 1rem;
     margin-bottom: 1rem;
     transition: 0.4s ease-in;
     box-shadow: 0px 0px 8px 6px rgba(49, 50, 51, 0.459);
@@ -176,6 +237,13 @@
     &:hover {
         background-color: rgba(224, 187, 187, 0.425);
     }
+
+    & > img {
+        height: 2rem;
+        border-radius: 50%;
+        margin-right: .2rem;
+    }
+
     .request,
     .name {      
         padding: .5rem;
@@ -185,7 +253,7 @@
         /*background-color: $color-fifth;*/
         color: rgb(15, 46, 28);
         font-weight: bold;
-        
+        font-size: .8em;
     }
     .name{
         width: 60%;
@@ -198,14 +266,16 @@
         background-color: white;
         border-radius: 0 8px 8px 0;
         width: 40%;
-        text-align: center;
+        min-width: 110px;
+        display: grid;
+        place-content: center;
         a{
             text-decoration: none;
             transition: .5s all;
             display: inline-block;
-            /*width: 80%; */
+            font-size: .8em;
             &:hover{
-                transform: scale(1.2) ;
+                text-decoration: underline;
                 color:red;
             }
         }
@@ -214,8 +284,9 @@
             background-color: transparent;
             font-size: 14px;
             transition: .5s all;
-            &:hover{
-                transform: scale(1.2) ;
+            &:hover,
+            &:active{
+                text-decoration: underline;
                 color: green;
                 font-weight: bold;
                 cursor: pointer;
@@ -236,7 +307,7 @@
             display: inline-block;
             /*width: 80%; */
             &:hover{
-                transform: scale(1.2) ;
+                text-decoration: underline;
                 font-weight: bold;
             }
         }

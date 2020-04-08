@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OdinFacebook</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  
-  <body>
-  
-  <%= render 'layouts/header' %>
-      <% if current_user %>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-      <% end %>
+<head>
+  <title>OdinFacebook</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <% if user_signed_in? %>
+  <div class="container">
+    <%= render 'layouts/header' %>
+    <% if current_user %>
+    <p class="in-notice"><%= notice %></p>
+    <p class="in-alert"><%= alert %></p>
+    <% end %>
+    <div class="content-container relative">
+      <%= yield %>
+      <footer class="footer-container">
+        <span>ⓒ Copyrights Reserved </span>
+      </footer>
+    </div>
+  </div>
+  <% else %>
+  <div class="container relative">
     <%= yield %>
+    <footer class="footer-container">
+      <span>ⓒ Copyrights Reserved</span>
+    </footer>
+  </div>
+  <% end %>
 
 
- 
 
-  </body>
+
+
+</body>
+
 </html>

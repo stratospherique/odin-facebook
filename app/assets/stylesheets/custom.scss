@@ -1,28 +1,120 @@
+@import 'reset.css';
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,500&family=Roboto:wght@300;400&display=swap');
 @import 'variables';
+
 body{
   background-color: $color-tertiary;
+  height: 100vh;
+  width: 100%vw;
 }
 
-.default-a{
+
+
+
+.default-a {
   text-decoration: none;
   color: rgb(68, 65, 65);
   transition: .5s all;
-  &:hover{
-    transform: scale(1.2);
+  margin: .3rem;
+  &:hover,
+  &:active{
+    text-decoration: underline double;
     color:white;
   }
 }
 
-header {
+.container {
+  height: 100%;
+  width: 100%;
+  min-width: 290px;
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.footer-container {
+  text-align: center;
+  & > span {
+    width: 8rem;
+    user-select: none;
+  }
+}
+
+.content-container {
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow-y: scroll;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  max-height: 50px;  
+
+  &::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: grey;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.header-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 50px;
+  @media screen and (max-width: 750px) {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  } 
+  
   background-image: linear-gradient(to right, $color-secondary, $color-primary);
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
   z-index: 4;
+
+  .logo {
+    display: grid;
+    place-content: center;
+    height: 50px;
+    @media screen and (max-width: 750px) {
+      height: 38px;
+    }
+    width: 150px;
+    font-family: 'Trade Winds', cursive;
+    font-size: 28px;
+    position: absolute;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    left: 4%;
+    top: 0;
+    cursor: pointer;
+  }
+
   .nav-left {
     display: flex;
-    width: 50%;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    height: auto;
+    transition: height .8s ease;
+    @media screen and (max-width: 750px) {
+      width: 100%;
+      height: 0;
+    }
     ul {
       display: flex;
       list-style: none;
@@ -32,6 +124,9 @@ header {
       align-items: center;
       margin: 0;
       height: 100%;
+      @media screen and (max-width: 750px) {
+        flex-direction: column;
+      } 
     
       li{
         position: relative;
@@ -47,7 +142,7 @@ header {
           transition: 0.8s ease-in;
 
           &:hover {
-            transform: translateY(6px);
+            transform: translateY(.2rem);
             background-color: $color-fifth;
           }
           &:hover ~ .dropdown {
@@ -55,48 +150,49 @@ header {
             transform: scale(1);
 
           }
-        }
+        }      
+      }
 
-        .dropdown {
+      .logout-mobile {
+        display: none;
+
+        @media screen and (max-width: 750px) {
           display: flex;
-          flex-direction: column;
-          justify-content: center;
-          height: auto;
-          position: absolute;
-          border: 1px solid red;
-          border-radius: 8px;
-          background-image: linear-gradient(to top right, $color-primary, $color-fifth);
-          top: 50px;
-          left: 0;
-          width: max-content;
-          padding: 2rem;
-          z-index: 100;
-          &__item{
-            width: 90%;
-            padding: 5px;
-            border: 1px solid black;
-            background-image: linear-gradient(to right, rgba($color-secondary, .7), rgba($color-tertiary, .7), rgba($color-fifth, .7));
-          }
-          transform: scale(0);
-          transition: 0.6s ease-in-out;
         }
-
-       
       }
     }
   }
-  .nav-right{
+  .nav-right {
     display: flex;
+    height: 100%;
+    margin-right: 1%;
+    @media screen and (max-width: 750px) {
+      height: auto;
+      position: absolute;
+      right: .5rem;
+      top: 0;
+      margin-right: 0;
+    }
     flex-direction: column;
+    justify-content: center;
     position: relative;
     align-items: flex-end;
     .drop-btn {
       img {
+        cursor: pointer;
         border-radius: 50%;
+        @media screen and (max-width: 750px) {
+          height: 2rem;
+          margin-top: 6%;
+        }
       }
 
-      &:hover ~ .drop-box {
+      &:hover ~ .drop-box,
+      &:focus ~ .drop-box  {
         transform: scale(1);
+        @media screen and (max-width: 750px) {
+          display: none;
+        }
       }
     }
 
@@ -104,13 +200,16 @@ header {
       display: flex;
       flex-direction: column;
       align-items: center;     
-      position: absolute;
-      top: 1.8rem;
       z-index: 1;
+      transition: transform .2s ease-in;
       transform: scale(0);
+      transform-origin: top right;
       list-style: none;
       padding-left: 0;
       width: max-content;
+
+      position: absolute;
+      top: 100%;
       li{
         padding: 6px;
         background-image: linear-gradient(to right, $color-secondary, $color-primary);
@@ -135,10 +234,59 @@ header {
       }
     }
   }
+
+  #drop-nav {
+    display: none;
+
+    &:checked ~ .nav-left {
+      height: 12rem;
+      @media screen and (min-width: 750px) {
+        height: auto;
+      }
+    }
+
+    &:checked ~ .drop-toggler {
+
+
+      .bars {
+        color: gray;
+      }
+    }
+  }
+
+  .drop-toggler {
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid grey;
+    border-radius: 6px;
+    @media screen and (max-width: 750px) {
+      display: flex;
+      align-self: flex-end;
+      align-items: center;
+      margin: .2rem 3rem;
+    }
+    
+    & > label {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .bars {
+        transition: color .4s ease-in;
+        color: white;
+      }
+    }
+  }
 }
 
 
-.notice,
-.alert {
+.in-notice,
+.in-alert {
+  width: 4rem;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 2rem);
   color: transparent;
 }
