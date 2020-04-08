@@ -1,14 +1,12 @@
 <div class="not-wrapper">
   <h1 class="notification-head">Notifications</h1>
-</div>
-<div class="notifications-wrapper">
-<% if @notifications.empty? %>
+  <% if @notifications.empty? %>
   <p class="no-notification">No notifications yet</p>
-<% else %>
+  <% else %>
   <ul class="notifications">
     <% @notifications.each do |notification| %>
-      <li class="notification"> <%= notification.message %> </li>
+    <li class="notification"> <%= notification.message %> </li>
     <% end %>
   </ul>
-<% end %>
+  <% end %>
 </div>

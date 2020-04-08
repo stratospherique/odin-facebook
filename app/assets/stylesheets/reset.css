@@ -46,3 +46,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+h1,h2,h3 {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
+p, li {
+	font-family: 'Roboto', sans-serif;
+}
+
+span {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
