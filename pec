@@ -1,0 +1,558 @@
+[33mcommit 8f9138b6881bfda4700cee1f5bf0b02127844080[m[33m ([m[1;36mHEAD -> [m[1;32mimproving-style[m[33m, [m[1;31morigin/improving-style[m[33m)[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Apr 8 01:54:13 2020 +0100
+
+    update fonts
+
+[33mcommit 6dd3f27f123666542b51ce1de27892c3e2dbffad[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Apr 8 00:50:42 2020 +0100
+
+    made footer always at the bottom
+
+[33mcommit ebfc8f9261eaa7422783e9bde2e46ad9f4caccef[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Apr 7 23:25:42 2020 +0100
+
+    update profile + friendship css
+
+[33mcommit 2feb51d37d0621c192ac62c94b46a212a3acd9e1[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Apr 3 19:28:16 2020 +0100
+
+    improve sign in and sign up pages
+
+[33mcommit e1e9e118572c9024a940a9d0f05903ea6fb57d9e[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Apr 3 17:58:55 2020 +0100
+
+    add reset.css and fix header issues
+
+[33mcommit dc0bef1f78ea8d0b6532d87e7bb4606cc5d0c083[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Mar 30 16:12:30 2020 +0100
+
+    update Readme
+
+[33mcommit f18fe9959c27d8640cea8d73dab64c79ba8128ee[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Sat Mar 14 01:20:44 2020 +0100
+
+    changed color palette and add responsiveness to posts
+
+[33mcommit f1098a813b2eba0c26e2291f183e6793b4986253[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Mar 13 01:15:35 2020 +0100
+
+    user partials form post form and make redirect intelligent :)
+
+[33mcommit 2923938128e540fe2705536c5283c7206bc35f08[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Mar 12 23:22:14 2020 +0100
+
+    add partial for rendering the list of posts in timeline
+
+[33mcommit f8e1026f4bba02b3ff81bf6dc80f8d8527d9f2cd[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Mar 12 13:15:53 2020 +0100
+
+    make comment section collapse/expand on button click
+
+[33mcommit 4c33fe0d3ef3fccb363a45317bdda78896a3c04f[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Mar 12 12:11:12 2020 +0100
+
+    divide post buttons section
+
+[33mcommit 6608fa57213d4809127073bf6855cdeb3d6bcf59[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Mar 11 01:30:01 2020 +0100
+
+    improve posts style
+
+[33mcommit 5c2e6afc647f1185922f11e27e1ce78c7a8360a2[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Mar 10 00:25:46 2020 +0100
+
+    changed posts appearance
+
+[33mcommit a0b00904a35f40d950af84b28946a041a43acb39[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Mar 4 17:03:49 2020 +0100
+
+    add styling to timeline
+
+[33mcommit 1bc6beedc5c00bd726ef9ccd02e4c73e273aaa7f[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Mar 4 13:49:00 2020 +0100
+
+    basic navbar styling and animation
+
+[33mcommit b6597a0098706072640c7d0a6376e29d8447b5dd[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Mar 3 00:31:33 2020 +0100
+
+    make header responsive
+
+[33mcommit fae9f830ee97fc4fa9fe2f90845b1bc318962ec2[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 26 17:41:00 2019 +0100
+
+    update readme
+
+[33mcommit d7546724c50769ff67742ed633930980f3f014ce[m[33m ([m[1;31mheroku/master[m[33m)[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 26 16:58:40 2019 +0100
+
+    remove maximum length validation for first and last name
+
+[33mcommit 5152c9abbb8bed31044c3c1e3b932493ee73f430[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 26 15:39:07 2019 +0100
+
+    change ruby & bundler versions
+
+[33mcommit 678bb6abbc3b97ee989620de2d66286d3b4e2c0b[m
+Merge: 029fdd3 873b9e3
+Author: Ahmed <ahmedosm10@gmail.com>
+Date:   Fri Jul 26 14:35:28 2019 +0100
+
+    Merge pull request #2 from stratospherique/development
+    
+    Development
+
+[33mcommit 873b9e388e02a65d61907d514a514f25a762ecb9[m[33m ([m[1;31morigin/development[m[33m, [m[1;32mdevelopment[m[33m)[m
+Merge: 18049cd 2e8b918
+Author: Ahmed <ahmedosm10@gmail.com>
+Date:   Fri Jul 26 14:28:16 2019 +0100
+
+    Merge pull request #3 from stratospherique/features
+    
+    Asking for approval to merge to development and start the deployment to heroku process
+
+[33mcommit 2e8b9180d2ef33359fd00af8441732cb6b1531f2[m[33m ([m[1;31morigin/features[m[33m, [m[1;32mfeatures[m[33m)[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 25 08:28:33 2019 -0500
+
+    found the bug and crushed it
+
+[33mcommit 93ba94c301a8fea8e36cc73379560e7b4cdfc9fd[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Jul 24 22:24:49 2019 +0100
+
+    test the header links redirections
+
+[33mcommit 22e11b62c85b709c5edd6593ca516eabedbcf5aa[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jul 24 12:23:09 2019 -0500
+
+    work on some friendship regarding tests
+
+[33mcommit 68a7c11128fbf614996171792dac4edda512ebf3[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 23 23:05:27 2019 +0100
+
+    add test specific to timeline and profile views
+
+[33mcommit 85d7b2156a8c3bf103208ca03212871fc2dbb60d[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 23 16:07:40 2019 -0500
+
+    add test for creating a post, and adding a comment
+
+[33mcommit ec31dab93de3dce75efbb2709ecbeedfd0c022c2[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 23 21:30:44 2019 +0100
+
+    write false positive tests for user sign up
+
+[33mcommit 041b0ddede59b57e6c2af5571d5281592e2932a0[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 23 11:49:54 2019 -0500
+
+    work on the sign in test
+
+[33mcommit 030d41a207f1121c866ebb2c47afec6a72dde40b[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 23 17:03:09 2019 +0100
+
+    write tests for user sign up
+
+[33mcommit 40bce4ec2858e89088f6359ddca2e03d3af79cba[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 23 10:12:34 2019 -0500
+
+    started with the features testing
+
+[33mcommit fa20578b501785633aa57ee37d4c0f74a6f5d86a[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 23 15:42:12 2019 +0100
+
+    style the right part of the navbar
+
+[33mcommit 380d122d1ce4a10306a387999cf2562541fed985[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 23 09:08:49 2019 -0500
+
+    finish the work on the styling of the header and the notification site
+
+[33mcommit 062e2dc4560e583acef17dbb660f7ff19e1e8e35[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 22 19:13:21 2019 +0100
+
+    add style to the nav links
+
+[33mcommit 8f116c6986ef839624c57912aabb21266fcca7af[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 22 12:40:11 2019 -0500
+
+    work done on the nav bar
+
+[33mcommit a6919b70c53122496cb56720b32dbb5ea00d99c3[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 22 18:04:25 2019 +0100
+
+    start styling the header
+
+[33mcommit 54dcd06cea3a78bd11d4ec54bda197d7608fb07b[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 22 11:10:15 2019 -0500
+
+    test
+
+[33mcommit 54042d60ea16e0d0180ee653bb33695b9b9ed5f0[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Fri Jul 19 15:47:43 2019 -0500
+
+    work on the colors and styling
+
+[33mcommit 7ee79f652b3bfa5e00ce1714dd13f84d415f70ed[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 19 19:48:32 2019 +0100
+
+    add styling the friend requests view
+
+[33mcommit ee9c02106cee6b6485878dac7a69d60a26f71a32[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Fri Jul 19 12:04:03 2019 -0500
+
+    work on the friend requests site
+
+[33mcommit 14c616f6c131cf0acdd4bdae04c75dc768cb95a0[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 19 17:27:50 2019 +0100
+
+    propagate styling to list of friends and unkown users
+
+[33mcommit a5f1456281da6a4a00c225c357835e06cdafc27d[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Fri Jul 19 10:55:24 2019 -0500
+
+    working on some styling
+
+[33mcommit 31043624a306b9a482b30ae3669f2e7d73047671[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 19 16:15:22 2019 +0100
+
+    add style to the pending friends list
+
+[33mcommit 59ad767792dd8b8f0a0a5e1d61c849ebbf1699e0[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 18 16:24:02 2019 -0500
+
+    continue with the styling
+
+[33mcommit 0a0237d56c87319f684e6b7401faa4166d116ba8[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jul 18 21:55:19 2019 +0100
+
+    organize markup & add styling to friend request view
+
+[33mcommit 44770d6c93108c6b31a457821a70b87528fe8eb2[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 18 15:22:55 2019 -0500
+
+    continue styling
+
+[33mcommit e1e85ebd200d5e9b531158c14e53d895a20002f4[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jul 18 20:47:53 2019 +0100
+
+    add positioning to the top box of the profile view
+
+[33mcommit 4f96dd175dceeea0853ebc98d84f25c718396a3f[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 18 12:34:49 2019 -0500
+
+    work some more on the views and functionality
+
+[33mcommit 23afafdceda4e6e21a0dd0df42899990d6fc349d[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jul 18 17:54:07 2019 +0100
+
+    add image attribute for user model to get images on the views correctly
+
+[33mcommit 9dd4754b61aac669767b59a8d4edc2bcffb4b69e[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 18 10:51:08 2019 -0500
+
+    starte with the style of the profile page
+
+[33mcommit 0a219a6cc74fe5df60e981d7f4308c026e305264[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jul 18 15:27:25 2019 +0100
+
+    continue styling the timeline
+
+[33mcommit e97ca28765153987c6f3db70419eb0311a3a15d8[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jul 17 12:58:53 2019 -0500
+
+    add comment box and try to fix some markup issues
+
+[33mcommit 195b0bd7defd1e2fb602ab8980da21578573a87d[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Jul 17 18:17:27 2019 +0100
+
+    continue styling the posts by adding avatar and unlike button
+
+[33mcommit f1bc5c5db6ffa9d1b3ef795d289eb0d682f538d8[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 16 16:20:30 2019 -0500
+
+    styling the timeline
+
+[33mcommit 8e862950853310492ba1996be442ea13a3dda29a[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 16 21:39:00 2019 +0100
+
+    add style to the like button
+
+[33mcommit c19cea8d83d6bc0773cddb1e9651f594f3129d5b[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 16 15:06:38 2019 -0500
+
+    continue with the styling of the timeline site.
+
+[33mcommit e53cc6e17d17736f895480b60ce8d99ebce8242e[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 16 20:29:01 2019 +0100
+
+    continue styling the show post
+
+[33mcommit 867d6b115602549af8ae8a578414b38eb63969ab[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 16 13:58:23 2019 -0500
+
+    continue with the styling for the timeline page
+
+[33mcommit 9b69f925a4fade44980780c3b97e89abb374bb78[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 16 18:21:30 2019 +0100
+
+    continue working on the timeline
+
+[33mcommit c50bba3237993af94d2531ea394756e2d82ec8a7[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 16 11:46:48 2019 -0500
+
+    continue styling the views
+
+[33mcommit 5a1f83ba79957efe4214782c81d9f13e21c44464[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 16 16:54:49 2019 +0100
+
+    continue styling the signup page
+
+[33mcommit 2f2bf2b944eee0045d7fea61f86eca62a102aba6[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 16 10:10:42 2019 -0500
+
+    continue with the styling of the signup section
+
+[33mcommit e487adf1af9a26e698b57c4bb166b0128f4cf1c6[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 15 22:37:25 2019 +0100
+
+    continue styling login buttons and input
+
+[33mcommit 0418502971bfab59cdd929a2887393993d5caed8[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 15 16:00:31 2019 -0500
+
+    work on the styling for the login profile
+
+[33mcommit 6a62e9542f38c145b59e6b0a019792bb42791aed[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 15 19:52:25 2019 +0100
+
+    start styling the login page+drying the views
+
+[33mcommit 1a95069aa9e6bb28e778e898435dea47f5c54b22[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 15 12:21:41 2019 -0500
+
+    start doing some styling to the app
+
+[33mcommit 18049cd45c96bd66b95a35902f9fcbdad27c724f[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jul 10 14:14:09 2019 -0500
+
+    Implementation of the notificatin for friend acceptation
+
+[33mcommit 389c5458c1ee695749c01e22189a7a239b17c0c7[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Jul 10 18:04:01 2019 +0100
+
+    add notifications for sending friend requests, commenting and liking a post
+
+[33mcommit 7960b4b300be50b356d304118bf1b18a3f824b56[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 9 14:33:14 2019 -0500
+
+    Build the timeline display, work the likes there.  Notification in the navbar with pending requests
+
+[33mcommit 36369758af0f8fdc7669c191880d9a2a4becc0a2[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 9 17:00:40 2019 +0100
+
+    add deleteing likes and comments features + add deleting friend requests and accepting friend requests
+
+[33mcommit 7bd74b3f2e370b0dcdc526e7cbd19428376a2b64[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 8 13:50:12 2019 -0500
+
+    work on the controllers for the invitations and the displays of friends and ands pènding invites to be accepted
+
+[33mcommit f5ea08a4483210f35b0c6e40a40b58e74a2ee12a[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 8 15:28:25 2019 +0100
+
+    add commenting and liking features for posts
+
+[33mcommit 28d5189428b818ae9670a180b0422e43e6a53e81[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Fri Jul 5 15:52:34 2019 -0500
+
+    add post and comment controllers, work on the views to have minimal functionality
+
+[33mcommit 823294e2f07f3597f3a5ee05ff7d0f78f6a7f608[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Fri Jul 5 17:18:03 2019 +0100
+
+    add the option of showing facebook avatar or just gravatar + add a view for user
+
+[33mcommit 1f9acaaae47e63a46873fed102bdde5c0077595f[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jul 4 16:06:24 2019 -0500
+
+    add facebook login functionality with omniauth
+
+[33mcommit 1e41846cf4bdd96f4a39d31c2291c6686e2e334a[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Jul 3 15:46:18 2019 +0100
+
+    add the dependent destroy option to user, post and profile
+
+[33mcommit 828d613f4a23f7d818b2173a3fbcd5bc86d3f214[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jul 2 12:50:13 2019 -0500
+
+    implement like model and functionality and create test for it
+
+[33mcommit 106fc278586c25e7feef0c131e0498083bdf73c8[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jul 2 16:37:52 2019 +0100
+
+    implement invvitation model and set queries for retrieving friends, sent friend requests and recieved friend requests
+
+[33mcommit 276fec9691c2f6e5c5ff3afc4a7d14b009ee36dd[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 1 13:59:02 2019 -0500
+
+    create comments model, and build tests for it
+
+[33mcommit 029fdd3f2171d9da4a19e9fe158295fb98f649e8[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 1 10:44:50 2019 -0500
+
+    testback
+
+[33mcommit ef8a61ae92fb308bc9d7a657f61fd9efc20232e8[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Mon Jul 1 10:44:32 2019 -0500
+
+    tt
+
+[33mcommit 9dab0d93df61b4fe0deb90dde79f3ed4b2973a2a[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Mon Jul 1 16:14:11 2019 +0100
+
+    finish post testing + add profile model + testing
+
+[33mcommit 7bc679b30f419b3dcfae197acb128254b01e5017[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jun 27 16:44:19 2019 -0500
+
+    add post model, create assosiation with user, build the tests, with interaction with the user.
+
+[33mcommit 06203e9e5e4b57a704b3168d50ddff1e09ef9d43[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jun 27 20:38:57 2019 +0100
+
+    finish wirting test cases for User model (intial version)
+
+[33mcommit 9d9b6b473fe5015af8bd94ef4b154cfa562f2fbd[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Thu Jun 27 13:55:46 2019 -0500
+
+    validate user model with a TDD approach.
+
+[33mcommit 30780fdfd7c6c00815b05ed2a5948caf1d153241[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Thu Jun 27 18:11:45 2019 +0100
+
+    finish configuring devise and create User model
+
+[33mcommit 5b9cec4975d5408bc894358e5effe8be3bf11742[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jun 26 14:37:18 2019 -0500
+
+    format documentation for rspec
+
+[33mcommit f26cfaaeca747eccc6e88c395913d39a9086028e[m
+Merge: 3f2878c 858e6a3
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jun 26 14:35:55 2019 -0500
+
+    Merge branch 'development' of github.com:stratospherique/odin-facebook into development
+
+[33mcommit 3f2878c5286af3ba7e8ef7cde44b57d47c62d968[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Wed Jun 26 14:35:30 2019 -0500
+
+    setup Rspec, setup Postgres, created some mocks for testing
+
+[33mcommit 858e6a35cc750a25caa307c7207fdc3f0e5d4a1f[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Wed Jun 26 18:22:45 2019 +0100
+
+    change the diagram
+
+[33mcommit 3489e021f3e58d3fabe97d7457e39560607d46af[m
+Author: jofer86 <jofer86@gmail.com>
+Date:   Tue Jun 25 16:12:31 2019 -0500
+
+    change the diagram
+
+[33mcommit 61fb4c639d38f22b30cda09de965490b3e26094f[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jun 25 19:56:24 2019 +0100
+
+    add ER diagram
+
+[33mcommit 1ff3fc243e8cec34df254904fbc75fedb54a2387[m
+Author: stratospheriquegit config --global user.name stratospheriquegit config --global user.name stratospherique <ahmedosm10@gmail.com>
+Date:   Tue Jun 25 19:41:49 2019 +0100
+
+    initial commit

@@ -251,7 +251,7 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Create Post"
       click_on "Like"
       }.to change(Like.all, :size).by(1)
-      expect(page).to have_link('unlike')
+      expect(page).to have_selector(:link_or_button, 'Unlike')
       expect(page).to have_current_path posts_path
     end
 
@@ -276,7 +276,7 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Like"
       }.to change(Like.all, :size).by(1)
       expect{
-        first(:link, "unlike").click
+        first(:button, "Unlike").click
       }.to change(Like.all, :size).by(-1)
       expect(page).to have_current_path posts_path
     end
@@ -303,7 +303,7 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Create Post"
       click_on "Like"
       }.to change(Like.all, :size).by(1)
-      expect(page).to have_link('unlike')
+      expect(page).to have_button('Unlike')
       expect(page).to have_current_path user_path(user)
       
     end
@@ -330,9 +330,9 @@ RSpec.feature "Facebooks", type: :feature do
       click_on "Create Post"
       click_on "Like"
       }.to change(Like.all, :size).by(1)
-      expect(page).to have_link('unlike')
+      expect(page).to have_button('Unlike')
       expect{
-        first(:link, "unlike").click
+        first(:button, "Unlike").click
       }.to change(Like.all, :size).by(-1)
       expect(page).to have_current_path user_path(user)    
     end
@@ -447,7 +447,8 @@ RSpec.feature "Facebooks", type: :feature do
         fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
         click_on "Log in"
-        click_on 'Home'
+        find_link(id: 'home').click
+        
         expect(page).to have_current_path posts_path
       end
 
@@ -463,7 +464,7 @@ RSpec.feature "Facebooks", type: :feature do
         fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
         click_on "Log in"
-        click_on 'Profile'
+        find_link(id: 'profile').click
         expect(page).to have_current_path user_path(u1)
       end
 
@@ -479,7 +480,7 @@ RSpec.feature "Facebooks", type: :feature do
         fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
         click_on "Log in"
-        click_on 'Friend Requests (0)'
+        find_link(id: 'friend').click
         expect(page).to have_current_path users_path
       end
 
@@ -495,7 +496,7 @@ RSpec.feature "Facebooks", type: :feature do
         fill_in "user_email", with: "jorge@gmail.com"
         fill_in "user_password", with: "password"
         click_on "Log in"
-        click_on 'Notifications'
+        find_link('notification').click
         expect(page).to have_current_path notifications_index_path
         expect(page).to have_css("img",:count => 1)
         expect(page).to have_css(".drop-btn")

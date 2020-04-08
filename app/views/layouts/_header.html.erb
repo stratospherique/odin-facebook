@@ -9,11 +9,11 @@
   <nav class="nav-left">
     <ul>
       <% if user_signed_in? %>
-      <li> <%= link_to icon('fas', 'home'), posts_path %> </li>
-      <li> <%= link_to icon('fas', 'id-card'), user_path(current_user) %> </li>
-      <li> <%= link_to icon('fas', 'user-plus'), users_path %> </li>
+      <li> <%= link_to icon('fas', 'home'), posts_path, id: 'home' %> </li>
+      <li> <%= link_to icon('fas', 'id-card'), user_path(current_user), id: 'profile' %> </li>
+      <li> <%= link_to icon('fas', 'user-plus'), users_path, id: 'friend' %> </li>
       <li>
-        <%= link_to icon('fas', 'bell'), notifications_index_path %>
+        <%= link_to icon('fas', 'bell'), notifications_index_path, id: 'notification' %>
       </li>
       <li class="logout-mobile">
         <%= link_to icon('fas', 'sign-out-alt'), destroy_user_session_path, method: :delete %>
